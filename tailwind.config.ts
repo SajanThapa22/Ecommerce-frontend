@@ -18,18 +18,13 @@ const config: Config = {
       },
       fontFamily: {
         "roboto-mono": ["Roboto Mono", "monospace"],
+        roman: ['"Times New Roman"', "serif"],
       },
       gridTemplateColumns: {
         responsive: "repeat(auto-fit, minmax(200px, 1fr))",
       },
       boxShadow: {
         custom: "0 4px 6px rgba(0, 0, 0, 0.1)",
-      },
-      transition: {
-        custom: "transform ease-in .2s",
-      },
-      translate: {
-        "custom-y": "5px",
       },
     },
   },

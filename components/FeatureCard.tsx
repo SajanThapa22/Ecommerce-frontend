@@ -1,17 +1,17 @@
-import React from "react";
-import { FaShippingFast } from "react-icons/fa";
+import React, { ReactNode } from "react";
 
 interface Props {
   feature: string;
   offer: string;
+  children: ReactNode;
 }
 
-const featureCard = ({ feature, offer }: Props) => {
+const featureCard = ({ feature, offer, children }: Props) => {
   return (
     <div className="text-center p-[1.5rem] bg-white rounded-[8px] shadow-custom ease-in duration-200 flex flex-col items-center transition-transform transform  hover:-translate-y-1">
-      <FaShippingFast className="text-[2.5rem] mb-[1rem] text-black transition-transform" />
-      <h3 className="font-semibold text-[18px]">{feature}</h3>
-      <p className="font-sans text-sm">{offer}</p>
+      {children}
+      <h3 className="font-semibold text-[18px] capitalize mb-2">{feature}</h3>
+      <p className="font-sans text-[18px]">{offer}</p>
     </div>
   );
 };

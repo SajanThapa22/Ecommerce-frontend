@@ -5,7 +5,9 @@ interface Props {
 
 const Button = ({ bg, text }: Props) => {
   return (
-    <button className={`px-2.5 py-2 bg-${bg} text-white rounded text-center`}>
+    <button
+      className={`px-6 py-3 text-sm font-sans capitalize text-white rounded-[6px] text-center ${bg}`}
+    >
       {text}
     </button>
   );
