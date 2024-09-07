@@ -1,12 +1,12 @@
 interface Props {
-  bg: string;
+  style: string;
   text: string;
 }
 
-const Button = ({ bg, text }: Props) => {
+const Button = ({ style, text }: Props) => {
   return (
     <button
-      className={`px-6 py-3 text-sm font-sans capitalize text-white rounded-[6px] text-center ${bg}`}
+      className={` text-sm font-sans capitalize text-white rounded-[4px] text-center ${style}`}
     >
       {text}
     </button>

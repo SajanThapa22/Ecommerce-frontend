@@ -5,7 +5,11 @@ interface Props {
 }
 
 function UserIcon({ username }: Props) {
-  return <div className="user-icon">{username.charAt(0).toUpperCase()}</div>;
+  return (
+    <div className="size-10 aspect-square rounded-full bg-black text-white text-center text-xl">
+      {username.charAt(0).toUpperCase()}
+    </div>
+  );
 }
 
 export default UserIcon;
