@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import UserIcon from "./UserIcon";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface User {
   username: string;
@@ -8,32 +10,37 @@ interface User {
 
 const navs = [
   { id: 1, path: "/", text: "home" },
-  { id: 1, path: "/products", text: "products" },
-  { id: 1, path: "/cart", text: "cart" },
+  { id: 2, path: "/products", text: "products" },
+  { id: 3, path: "/cart", text: "cart" },
 ];
 
 function Header({ username }: User) {
+  const pathName = usePathname();
+  const isActive = (href: string) => href === pathName;
+
   return (
-    <header className="bg-black py-3 px-5 sticky top-0">
-      <nav>
-        <ul className="list-none flex justify-center gap-[60px] items-center text-white">
+    <header className="bg-black h-12 px-5 sticky top-0 z-[100]">
+      <nav className="h-full">
+        <ul className="list-none flex justify-center items-center text-white h-full">
           {navs.map((link) => (
-            <li key={link.id}>
+            <li className="h-full flex items-center" key={link.id}>
               <Link
-                className="font-bold uppercase tracking-[1px] hover:text-[#f0f0f0]"
                 href={link.path}
+                className={`font-bold uppercase tracking-[1px] h-full flex items-center w-full px-5 ${
+                  isActive(link.path) ? "bg-gray-100 text-black" : ""
+                }`}
               >
                 {link.text}
               </Link>
             </li>
           ))}
-          <li>
+          <li className="h-full flex items-center">
             {username ? (
               <UserIcon username={username} />
             ) : (
               <Link
-                className="font-bold uppercase tracking-[1px] hover:text-[#f0f0f0]"
                 href="/auth"
+                className="font-bold uppercase tracking-[1px] h-full flex items-center px-5"
               >
                 Login/Signup
               </Link>

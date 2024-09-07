@@ -15,9 +15,9 @@ function ProductCard({ _id, name, description, price, image }: Product) {
         <h3 className="text-[18px] font-[600]">{name}</h3>
       </Link>
       <p className="text-[16px] mb-4">Price: Rs {price.toFixed(2)}</p>
-      <button className="bg-black text-white border-none py-[10px] px-4 text-sm cursor-pointer transition-all ease-in duration-300 hover:bg-[#333333[">
+      {/* <button className="bg-black text-white border-none py-[10px] px-4 text-sm cursor-pointer transition-all ease-in duration-300 hover:bg-[#333333[">
         Add to Cart
-      </button>
+      </button> */}
     </div>
   );
 }
