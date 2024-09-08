@@ -39,10 +39,10 @@ function Header({ username }: User) {
               <UserIcon username={username} />
             ) : (
               <Link
-                href="/auth"
+                href="/login"
                 className="font-bold uppercase tracking-[1px] h-full flex items-center px-5"
               >
-                Login/Signup
+                Login
               </Link>
             )}
           </li>

@@ -8,7 +8,7 @@ const Button = ({ style, text, type }: Props) => {
   return (
     <button
       type={type}
-      className={` text-sm font-sans capitalize text-white rounded-[4px] text-center ${style}`}
+      className={`px-5 py-3 bg-blue-500 text-sm font-sans capitalize text-white rounded-[4px] text-center ${style}`}
     >
       {text}
     </button>
