@@ -9,12 +9,14 @@ const page = async () => {
   // }
   // const authResponse = await fetch('http://localhost:3000/api/auth')
 
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRkNWZmODFkM2E1YjBlOWIzOTFhODAiLCJpYXQiOjE3MjU4MDAyMzcsImV4cCI6MTcyNTgwMjYzN30.WcMnRQKDcsjOpv8IQ3m14n9RnwKAgxBaGbMv3o4Epxs";
   useEffect(() => {
     const fetchCart = async () => {
       try {
         const res = await fetch("http://localhost:3000/api/cart", {
           headers: {
-            Authorization: `Bearer ${accessToken}`,
+            Authorization: `Bearer ${token}`,
           },
         });
 
