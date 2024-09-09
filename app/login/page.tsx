@@ -1,5 +1,6 @@
 "use client";
 import Button from "@/components/Button";
+import { access } from "fs";
 import { useForm } from "react-hook-form";
 interface FormData {
   email: string;
@@ -23,6 +24,7 @@ const Login = () => {
         body: JSON.stringify(data),
       });
       const { accessToken } = await res.json();
+      console.log(accessToken);
     } catch (err) {
       console.log(err);
     }
