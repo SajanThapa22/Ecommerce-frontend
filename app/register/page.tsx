@@ -1,21 +1,27 @@
 "use client";
 import Button from "@/components/Button";
-import { access } from "fs";
+import { access, watch } from "fs";
 import { useForm } from "react-hook-form";
+
 interface FormData {
   fullName: string;
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
 const Register = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isValid },
   } = useForm<FormData>({ mode: "all" });
 
+  const password = watch("password");
+
   const onSubmit = async (data: FormData) => {
+    const { confirmPassword, ...rest } = data;
     try {
       const res = await fetch("http://localhost:3000/api/auth", {
         method: "POST",
@@ -73,30 +79,37 @@ const Register = () => {
           <div>
             <input
               id="password"
-              {...register("password", { required: true })}
+              {...register("password", { required: true, minLength: 7 })}
               className="border border-[#cbcaca] px-4 py-2 rounded-[12px] text-black focus:outline-none focus:border-primary w-full bg-bgComp"
               placeholder="Password"
               type="password"
-              name="password"
-              autoComplete="current-password"
             />
             {errors.password?.type === "required" && (
               <p className="text-red-700">Please enter the password</p>
+            )}
+            {errors.password?.type === "minLength" && (
+              <p className="text-red-700">Password must be 7 characters long</p>
             )}
           </div>
 
           <div>
             <input
-              id="password"
-              {...register("password", { required: true })}
+              id="confirmPassword"
+              {...register("confirmPassword", {
+                required: true,
+                minLength: 7,
+                validate: (value) =>
+                  value === password || "Passwords do not match",
+              })}
               className="border border-[#cbcaca] px-4 py-2 rounded-[12px] text-black focus:outline-none focus:border-primary w-full bg-bgComp"
-              placeholder="Password"
-              type="password"
-              name="password"
-              autoComplete="current-password"
+              placeholder="confirmPassword"
+              type="confirmPassword"
             />
-            {errors.password?.type === "required" && (
-              <p className="text-red-700">Please enter the password</p>
+            {errors.confirmPassword?.type === "required" && (
+              <p className="text-red-700">Please enter the confirm password</p>
+            )}
+            {errors.confirmPassword?.type === "validate" && (
+              <p className="text-red-700">{errors.confirmPassword.message}</p>
             )}
           </div>
         </div>
