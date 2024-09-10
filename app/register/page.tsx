@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/Button";
 import { access, watch } from "fs";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 interface FormData {
@@ -28,10 +29,12 @@ const Register = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(rest),
       });
-      const { accessToken } = await res.json();
-      console.log(accessToken);
+
+      if (res.status === 200) {
+        const { accessToken } = await res.json();
+      }
     } catch (err) {
       console.log(err);
     }
@@ -45,11 +48,11 @@ const Register = () => {
       >
         <div className="w-full flex flex-col gap-3 2xl:gap-5 justify-center text-center items-center">
           <div className="text-center">
-            <p className="text-[26px] text-txtClr">Login</p>
+            <p className="text-[26px] text-txtClr">Register</p>
           </div>
         </div>
 
-        <div className="grid gap-3 text-center">
+        <div className="grid gap-3">
           <div>
             <input
               id="fullname"
@@ -59,7 +62,7 @@ const Register = () => {
               type="text"
             />
             {errors.fullName?.type === "required" && (
-              <p className="text-red-700">Please enter your full name</p>
+              <p className="text-red-700 ml-2">Please enter your full name</p>
             )}
           </div>
 
@@ -72,7 +75,7 @@ const Register = () => {
               type="text"
             />
             {errors.email?.type === "required" && (
-              <p className="text-red-700">Please enter your email</p>
+              <p className="text-red-700 ml-2">Please enter your email</p>
             )}
           </div>
 
@@ -85,10 +88,12 @@ const Register = () => {
               type="password"
             />
             {errors.password?.type === "required" && (
-              <p className="text-red-700">Please enter the password</p>
+              <p className="text-red-700 ml-2">Please enter the password</p>
             )}
             {errors.password?.type === "minLength" && (
-              <p className="text-red-700">Password must be 7 characters long</p>
+              <p className="text-red-700 ml-2">
+                Password must be 7 characters long
+              </p>
             )}
           </div>
 
@@ -106,22 +111,26 @@ const Register = () => {
               type="confirmPassword"
             />
             {errors.confirmPassword?.type === "required" && (
-              <p className="text-red-700">Please enter the confirm password</p>
+              <p className="text-red-700 ml-2">
+                Please enter the confirm password
+              </p>
             )}
             {errors.confirmPassword?.type === "validate" && (
-              <p className="text-red-700">{errors.confirmPassword.message}</p>
+              <p className="text-red-700 ml-2">
+                {errors.confirmPassword.message}
+              </p>
             )}
           </div>
         </div>
         <div className="grid gap-3">
           <Button text="Login" type="submit" style="" />
-          {/*           
-          <p className="text-[14px] font-[300] text-txtClr">
-            Don't have an account yet?
-            <Link className="text-blue-500 underline ml-2" href="/register">
-              Sign up
+
+          <p className="text-[14px] font-[300] text-left">
+            Have an account already?
+            <Link className="text-blue-500 underline ml-2" href="/login">
+              Login
             </Link>
-          </p> */}
+          </p>
         </div>
       </form>
     </div>

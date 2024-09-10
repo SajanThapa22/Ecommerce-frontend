@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/Button";
 import { access } from "fs";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 interface FormData {
   email: string;
@@ -37,12 +38,12 @@ const Login = () => {
         className="rounded-[16px] bg-gray-400 px-5 py-[30px] w-[350px] xl:w-[400px] 2xl:w-[600px] mx-auto my-auto grid gap-10 2xl:gap-14"
       >
         <div className="w-full flex flex-col gap-3 2xl:gap-5 justify-center text-center items-center">
-          <div className="text-center">
-            <p className="text-[26px] text-txtClr">Login</p>
+          <div className="">
+            <p className="text-[26px] ">Login</p>
           </div>
         </div>
 
-        <div className="grid gap-3 text-center">
+        <div className="grid gap-3">
           <div>
             <input
               id="email"
@@ -52,7 +53,7 @@ const Login = () => {
               type="text"
             />
             {errors.email?.type === "required" && (
-              <p className="text-red-700">Please enter your email</p>
+              <p className="text-red-700 ml-2">Please enter your email</p>
             )}
           </div>
 
@@ -67,19 +68,19 @@ const Login = () => {
               autoComplete="current-password"
             />
             {errors.password?.type === "required" && (
-              <p className="text-red-700">Please enter the password</p>
+              <p className="text-red-700 ml-2">Please enter the password</p>
             )}
           </div>
         </div>
         <div className="grid gap-3">
           <Button text="Login" type="submit" style="" />
-          {/*           
-          <p className="text-[14px] font-[300] text-txtClr">
+
+          <p className="text-[14px] font-[300] text-left">
             Don't have an account yet?
             <Link className="text-blue-500 underline ml-2" href="/register">
               Sign up
             </Link>
-          </p> */}
+          </p>
         </div>
       </form>
     </div>
