@@ -24,8 +24,9 @@ const Login = () => {
         },
         body: JSON.stringify(data),
       });
-      const { accessToken } = await res.json();
-      console.log(accessToken);
+      const { accessToken, refreshToken } = await res.json();
+      console.log("access token: ", accessToken);
+      console.log("refresh token: ", refreshToken);
     } catch (err) {
       console.log(err);
     }

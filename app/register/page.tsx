@@ -1,11 +1,10 @@
 "use client";
 import Button from "@/components/Button";
-import { access, watch } from "fs";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 interface FormData {
-  fullName: string;
+  name: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -24,16 +23,17 @@ const Register = () => {
   const onSubmit = async (data: FormData) => {
     const { confirmPassword, ...rest } = data;
     try {
-      const res = await fetch("http://localhost:3000/api/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(rest),
-      });
-
-      if (res.status === 200) {
-        const { accessToken } = await res.json();
+      if (isValid) {
+        const res = await fetch("http://localhost:3000/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(rest),
+        });
+        if (res.status === 200) {
+          console.log("User regeistered successfully!");
+        }
       }
     } catch (err) {
       console.log(err);
@@ -55,14 +55,19 @@ const Register = () => {
         <div className="grid gap-3">
           <div>
             <input
-              id="fullname"
-              {...register("fullName", { required: true })}
+              id="name"
+              {...register("name", { required: true, minLength: 5 })}
               className="border border-[#cbcaca] px-4 py-2 rounded-[12px] text-black autofill:bg-transparent focus:outline-none focus:border-primary w-full bg-bgComp"
-              placeholder="fullname"
+              placeholder="full name"
               type="text"
             />
-            {errors.fullName?.type === "required" && (
+            {errors.name?.type === "required" && (
               <p className="text-red-700 ml-2">Please enter your full name</p>
+            )}
+            {errors.name?.type === "minLength" && (
+              <p className="text-red-700 ml-2">
+                Full name should be alteast 5 characters long
+              </p>
             )}
           </div>
 
@@ -108,7 +113,7 @@ const Register = () => {
               })}
               className="border border-[#cbcaca] px-4 py-2 rounded-[12px] text-black focus:outline-none focus:border-primary w-full bg-bgComp"
               placeholder="confirmPassword"
-              type="confirmPassword"
+              type="password"
             />
             {errors.confirmPassword?.type === "required" && (
               <p className="text-red-700 ml-2">
@@ -123,7 +128,7 @@ const Register = () => {
           </div>
         </div>
         <div className="grid gap-3">
-          <Button text="Login" type="submit" style="" />
+          <Button text="Signup" type="submit" style="" />
 
           <p className="text-[14px] font-[300] text-left">
             Have an account already?

@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, ReactNode, useCallback, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useState,
+} from "react";
 import { jwtDecode } from "jwt-decode";
 
 interface AuthContextType {
@@ -84,4 +90,12 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       }}
     ></AuthContext.Provider>
   );
+};
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
 };
