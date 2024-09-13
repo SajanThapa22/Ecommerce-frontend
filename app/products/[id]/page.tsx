@@ -14,8 +14,8 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
   const product: Product = await res.json();
 
   return (
-    <>
-      <div className="grid grid-cols-2 items-center w-[80%] md:w-[60%] lg:w-[800px] max-w-[900px] aspect-[2/1] bg-white rounded-[14px] mx-auto mt-[100px] p-4 z-[20] gap-6">
+    <div className="w-dvh min-h-[92dvh] flex items-center justify-center">
+      <div className="grid grid-cols-2 items-center w-[80%] md:w-[60%] lg:w-[800px] max-w-[900px] aspect-[2/1] bg-white rounded-[14px] mx-auto p-4 z-[20] gap-6">
         <div>
           <img className="w-full object-cover" src={product?.image} alt="" />
         </div>
@@ -28,10 +28,13 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
           </div>
           <div className="text-[16px]">{product?.price}</div>
 
-          <Button text="Buy now" style="bg-tomato" />
+          <Button
+            text="Add to cart"
+            style="bg-tomato text-[20px] font-semibold"
+          />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

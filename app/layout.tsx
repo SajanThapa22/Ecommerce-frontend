@@ -23,8 +23,10 @@ export default function RootLayout({
       </head>
       <body>
         <AuthProvider>
-          <Header username="" />
-          <main>{children}</main>
+          <header>
+            <Header username="" />
+          </header>
+          <main className="h-full">{children}</main>
         </AuthProvider>
       </body>
     </html>
