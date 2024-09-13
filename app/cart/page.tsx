@@ -4,21 +4,34 @@ import { useEffect, useState } from "react";
 import { Product } from "../page";
 import ProductCard from "@/components/ProductCard";
 
-interface Props {
-  cart: Product[];
-  removeFromCart: (id: string) => void;
+interface Item {
+  product: Product;
+  quantity: string;
+  _id: string;
 }
 
-const Page = ({ cart, removeFromCart }: Props) => {
-  const [data, setData] = useState<Product[]>([]);
+const Page = () => {
+  const [data, setData] = useState<Item[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const accessToken = localStorage.getItem("accessToken");
 
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  const total = data?.reduce((sum, item) => sum + item.product.price, 0);
+
+  const removeItem = async (id: string) => {
+    const res = await fetch(`http://localhost:3000/api/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    if (res.status === 200) {
+      setData((prev) => prev.filter((item) => item._id !== id));
+    }
+  };
 
   useEffect(() => {
     const fetchCart = async () => {
-      const accessToken = localStorage.getItem("accessToken");
-
       if (accessToken) {
         const res = await fetch("http://localhost:3000/api/cart", {
           headers: {
@@ -26,9 +39,8 @@ const Page = ({ cart, removeFromCart }: Props) => {
           },
         });
         const result = await res.json();
-        setData(result.data);
-      } else {
-        setData([]);
+        console.log(result.items);
+        setData(result.items);
       }
       setLoading(false);
     };
@@ -45,31 +57,31 @@ const Page = ({ cart, removeFromCart }: Props) => {
       <h2 className="text-[28px] font-[700] text-center mb-[30px] uppercase tracking-[2px]">
         Your Cart
       </h2>
-      {cart.length === 0 ? (
+      {data?.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
         <>
           <ul className="list-none p-0">
-            {cart.map((item, index) => (
+            {data?.map((item) => (
               <li
-                key={index}
+                key={item.product._id}
                 className="flex items-center border-b border-solid border-[#e0e0e0] py-5"
               >
                 <img
                   className="size-[100px] object-cover mr-5 border border-black"
-                  src={item.image}
-                  alt={item.name}
+                  src={item.product.image}
+                  alt={item.product.name}
                 />
                 <div className="flex-grow">
                   <h3 className="text-[18px] mb-[10px] font-[700]">
-                    {item.name}
+                    {item.product.name}
                   </h3>
                   <p className="text-[16px] mb-[10px]">
-                    Rs {item.price.toFixed(2)}
+                    Rs {item.product.price}
                   </p>
                   <button
-                    onClick={() => removeFromCart(item._id)}
-                    className="bg-black text-white border-none px-3 py-2 pointer transition-colors duration-300 ease-in hover:bg-[#333333]"
+                    onClick={() => removeItem(item.product._id)}
+                    className="bg-[#dc2626] text-white border-none px-3 py-2 pointer transition-colors duration-300 ease-in hover:bg-[#333333]"
                   >
                     Remove
                   </button>
@@ -79,7 +91,7 @@ const Page = ({ cart, removeFromCart }: Props) => {
           </ul>
           <div className="text-right">
             <p className="text-[18px] font-[700] mb-5">
-              Total: Rs {total.toFixed(2)}
+              Total: Rs {total?.toFixed(2)}
             </p>
           </div>
         </>

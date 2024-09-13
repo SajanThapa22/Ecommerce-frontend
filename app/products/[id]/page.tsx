@@ -1,17 +1,23 @@
-import Button from "@/components/Button";
-import { Product } from "@/app/page";
+// import { Product } from "@/app/page";
+import AddToCart from "@/components/AddToCart";
+
+interface Product {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+}
 
 const ProductDetails = async ({ params }: { params: { id: string } }) => {
   const res = await fetch(`http://localhost:3000/api/products/${params.id}`, {
-    next: { revalidate: 10 }, // Optional: Revalidate every 10 seconds
+    next: { revalidate: 30 }, // Optional: Revalidate every 30 seconds
   });
+  const product = await res.json();
 
-  if (!res.ok) {
-    // Handle errors (e.g., product not found)
+  if (res.status !== 200) {
     return <div>Error fetching product details</div>;
   }
-
-  const product: Product = await res.json();
 
   return (
     <div className="w-dvh min-h-[92dvh] flex items-center justify-center">
@@ -26,12 +32,10 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
           <div className="opacity-80 text-[16px] text-black">
             {product?.description}
           </div>
-          <div className="text-[16px]">{product?.price}</div>
+          <div className="text-[16px] text-black">{product?.price}</div>
 
-          <Button
-            text="Add to cart"
-            style="bg-tomato text-[20px] font-semibold"
-          />
+          {/* Pass only productId */}
+          <AddToCart productId={product?._id} />
         </div>
       </div>
     </div>
