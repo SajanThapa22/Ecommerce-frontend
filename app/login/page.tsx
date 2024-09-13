@@ -1,8 +1,8 @@
 "use client";
 import Button from "@/components/Button";
-import { access } from "fs";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../context/AuthContext";
 interface FormData {
   email: string;
   password: string;
@@ -14,6 +14,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<FormData>({ mode: "all" });
+  const { login } = useAuth();
 
   const onSubmit = async (data: FormData) => {
     try {
@@ -24,9 +25,10 @@ const Login = () => {
         },
         body: JSON.stringify(data),
       });
-      const { accessToken, refreshToken } = await res.json();
-      console.log("access token: ", accessToken);
-      console.log("refresh token: ", refreshToken);
+      if (res.status === 200) {
+        const { accessToken, refreshToken } = await res.json();
+        login(accessToken, refreshToken);
+      }
     } catch (err) {
       console.log(err);
     }

@@ -3,9 +3,9 @@
 import {
   createContext,
   ReactNode,
-  useCallback,
-  useContext,
   useState,
+  useEffect,
+  useContext,
 } from "react";
 import { jwtDecode } from "jwt-decode";
 
@@ -21,63 +21,39 @@ interface AuthProviderProps {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [accessToken, setAccessToken] = useState<string | null>(
-    localStorage.getItem("access")
-  );
-  const [refreshToken, setRefreshToken] = useState<string | null>(
-    localStorage.getItem("refresh")
-  );
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [refreshToken, setRefreshToken] = useState<string | null>(null);
+
+  // Check if running on client-side and load the tokens from localStorage
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedAccessToken = localStorage.getItem("accessToken");
+      const storedRefreshToken = localStorage.getItem("refreshToken");
+      setAccessToken(storedAccessToken);
+      setRefreshToken(storedRefreshToken);
+    }
+  }, []);
 
   const isTokenValid = (token: string | null): boolean => {
     if (!token) return false;
     const decoded = jwtDecode<{ exp: number }>(token);
-    if (!decoded.exp) return false;
     return decoded.exp * 1000 > Date.now();
   };
 
-  //   const refreshAccessToken = useCallback(async (): Promise<boolean> => {
-  //     if (!refreshToken) return false;
-
-  //     try {
-  //       const response = await fetch(`http://localhost:3000/api/token`, {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(refreshToken),
-  //       });
-
-  //       if (response.status === 200) {
-  //         const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
-  //           response.data;
-  //         setAccessToken(newAccessToken);
-  //         setRefreshToken(newRefreshToken);
-  //         localStorage.setItem("access", newAccessToken);
-  //         localStorage.setItem("refresh", newRefreshToken);
-  //         return true;
-  //       } else {
-  //         return false;
-  //       }
-  //     } catch (error) {
-  //       console.error("Failed to refresh access token:", error);
-  //       return false;
-  //     }
-  //   }, [refreshToken]);
-
-  //   const fetchNewAccess = async () => {
-  //     if (!isTokenValid(refreshToken)) {
-  //       return await refreshAccessToken();
-  //     }
-  //   };
-
-  const login = (accessToken: string, refreshToken: string) => {
-    localStorage.setItem("accessToken", accessToken);
-    localStorage.setItem("refreshToken", refreshToken);
+  const login = (newAccessToken: string, newRefreshToken: string) => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("accessToken", newAccessToken);
+      localStorage.setItem("refreshToken", newRefreshToken);
+    }
+    setAccessToken(newAccessToken);
+    setRefreshToken(newRefreshToken);
   };
 
   const logout = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+    }
     setAccessToken(null);
     setRefreshToken(null);
   };
@@ -88,7 +64,9 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         login,
         logout,
       }}
-    ></AuthContext.Provider>
+    >
+      {children}
+    </AuthContext.Provider>
   );
 };
 
