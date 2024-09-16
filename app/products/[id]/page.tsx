@@ -20,13 +20,13 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <div className="w-dvh min-h-[92dvh] flex items-center justify-center">
-      <div className="grid grid-cols-2 items-center w-[80%] md:w-[60%] lg:w-[800px] max-w-[900px] aspect-[2/1] bg-white rounded-[14px] mx-auto p-4 z-[20] gap-6">
+    <div className="w-dvh min-h-[92dvh] flex items-center justify-center bg-white py-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center w-[80%] md:w-[60%] lg:w-[800px] max-w-[900px] aspect-[2/1] bg-gray-200 rounded-[14px] mx-auto p-4 z-[20] gap-6">
         <div>
           <img className="w-full object-cover" src={product?.image} alt="" />
         </div>
         <div id="details" className="flex flex-col gap-3 font-sans">
-          <div className="text-[18px] text-black font-[600]">
+          <div className="text-[24px] text-black font-[600]">
             {product?.name}
           </div>
           <div className="opacity-80 text-[16px] text-black">
@@ -34,7 +34,6 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
           </div>
           <div className="text-[16px] text-black">{product?.price}</div>
 
-          {/* Pass only productId */}
           <AddToCart productId={product?._id} />
         </div>
       </div>

@@ -38,7 +38,7 @@ const AddToCart = ({ productId }: Props) => {
   return (
     <button
       onClick={handleAddToCart} // Use the function reference here
-      className="px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 capitalize text-center border-none"
+      className="px-4 py-2 w-full md:w-[200px] rounded-lg bg-blue-700 hover:bg-blue-800 capitalize text-[16px] text-center font-semibold border-none"
     >
       add to cart
     </button>

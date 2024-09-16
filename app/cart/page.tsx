@@ -18,16 +18,14 @@ const Page = () => {
   const total = data?.reduce((sum, item) => sum + item.product.price, 0);
 
   const removeItem = async (id: string) => {
-    const res = await fetch(`http://localhost:3000/api/${id}`, {
+    const res = await fetch(`http://localhost:3000/api/cart/${id}`, {
       method: "DELETE",
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
     });
-    if (res.status === 200) {
-      setData((prev) => prev.filter((item) => item._id !== id));
-    }
+
+    setData((prev) => prev.filter((item) => item.product._id !== id));
   };
 
   useEffect(() => {
@@ -53,12 +51,14 @@ const Page = () => {
   }
 
   return (
-    <div className="max-w-[800px] mx-auto p-5 bg-white text-black">
+    <div className="w-screen min-h-[92dvh] mx-auto p-5 md:px-10 xl:px-[200px] bg-white text-black">
       <h2 className="text-[28px] font-[700] text-center mb-[30px] uppercase tracking-[2px]">
         Your Cart
       </h2>
       {data?.length === 0 ? (
-        <p>Your cart is empty</p>
+        <div className="h-[50dvh] w-full flex items-center justify-center text-[32px]">
+          Your cart is empty
+        </div>
       ) : (
         <>
           <ul className="list-none p-0">
@@ -81,7 +81,7 @@ const Page = () => {
                   </p>
                   <button
                     onClick={() => removeItem(item.product._id)}
-                    className="bg-[#dc2626] text-white border-none px-3 py-2 pointer transition-colors duration-300 ease-in hover:bg-[#333333]"
+                    className="bg-[#dc2626] text-white border-none px-3 py-2 pointer transition-colors duration-100 ease-in hover:bg-red-700"
                   >
                     Remove
                   </button>
