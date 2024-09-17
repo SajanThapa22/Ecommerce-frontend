@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
+import Spinner from "./Spinner";
 
 interface Props {
   productId: string;
@@ -28,7 +29,9 @@ const AddToCart = ({ productId }: Props) => {
       });
 
       if (res.status === 200) {
-        setIsLoading(false);
+        setInterval(() => {
+          setIsLoading(false);
+        }, 2000);
       }
 
       if (!res.ok) {
@@ -48,7 +51,13 @@ const AddToCart = ({ productId }: Props) => {
       onClick={handleAddToCart} // Use the function reference here
       className="px-4 py-2 w-full md:w-[200px] rounded-lg bg-blue-700 hover:bg-blue-800 capitalize text-[16px] text-center font-semibold border-none"
     >
-      add to cart
+      {isLoading ? (
+        <div className="flex gap-2 justify-center items-center">
+          <Spinner /> <p>Adding...</p>
+        </div>
+      ) : (
+        <p>Add to Cart</p>
+      )}
     </button>
   );
 };
