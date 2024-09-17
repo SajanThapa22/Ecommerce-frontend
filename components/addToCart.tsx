@@ -1,15 +1,18 @@
 "use client";
 
-import React from "react";
+import { useSearchParams } from "next/navigation";
+import React, { useState } from "react";
 
 interface Props {
   productId: string;
 }
 
 const AddToCart = ({ productId }: Props) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const accessToken = localStorage.getItem("accessToken");
 
   const handleAddToCart = async () => {
+    setIsLoading(true);
     try {
       if (!accessToken) {
         throw new Error("No access token found. Please log in.");
@@ -24,7 +27,12 @@ const AddToCart = ({ productId }: Props) => {
         body: JSON.stringify({ productId }),
       });
 
+      if (res.status === 200) {
+        setIsLoading(false);
+      }
+
       if (!res.ok) {
+        setIsLoading(false);
         throw new Error(`Error adding to cart: ${res.statusText}`);
       }
 
