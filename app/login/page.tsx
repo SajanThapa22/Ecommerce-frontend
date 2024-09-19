@@ -3,6 +3,7 @@ import Button from "@/components/Button";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
+import { useRouter } from "next/router";
 interface FormData {
   email: string;
   password: string;
@@ -15,6 +16,7 @@ const Login = () => {
     formState: { errors, isValid },
   } = useForm<FormData>({ mode: "all" });
   const { login } = useAuth();
+  const router = useRouter();
 
   const onSubmit = async (data: FormData) => {
     try {
@@ -28,6 +30,7 @@ const Login = () => {
       if (res.status === 200) {
         const { accessToken, refreshToken } = await res.json();
         login(accessToken, refreshToken);
+        router.push("/");
       }
     } catch (err) {
       console.log(err);
