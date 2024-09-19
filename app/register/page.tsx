@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/Button";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 
 interface FormData {
@@ -19,6 +20,7 @@ const Register = () => {
   } = useForm<FormData>({ mode: "all" });
 
   const password = watch("password");
+  const router = useRouter();
 
   const onSubmit = async (data: FormData) => {
     const { confirmPassword, ...rest } = data;
@@ -33,6 +35,7 @@ const Register = () => {
         });
         if (res.status === 200) {
           console.log("User regeistered successfully!");
+          router.push("/login");
         }
       }
     } catch (err) {
