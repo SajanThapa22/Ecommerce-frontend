@@ -31,7 +31,7 @@ function Cart({ cart, removeFromCart }: Props) {
                   <h3>{item.name}</h3>
                   <p>Rs {item.price.toFixed(2)}</p>
                   <button
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => removeFromCart(item._id)}
                     className="remove-button"
                   >
                     Remove
@@ -42,7 +42,7 @@ function Cart({ cart, removeFromCart }: Props) {
           </ul>
           <div className="cart-summary">
             <p>Total: Rs {total.toFixed(2)}</p>
-            <Link to="/checkout" className="checkout-button">
+            <Link href="/checkout" className="checkout-button">
               Proceed to Checkout
             </Link>
           </div>

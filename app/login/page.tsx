@@ -3,7 +3,8 @@ import Button from "@/components/Button";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+
 interface FormData {
   email: string;
   password: string;
