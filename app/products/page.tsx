@@ -3,9 +3,14 @@ import React, { useState, useEffect } from "react";
 import { Product } from "../page";
 import CardSkeleton from "@/components/CardSkeleton";
 import LoadMore from "@/components/LoadMore";
+import Link from "next/link";
 
-const AllProducts = async () => {
-  let page = 2;
+interface AllProductsProps {
+  searchParams: { page?: string }; // Accepting page as a query parameter
+}
+
+const AllProducts = async ({ searchParams }: AllProductsProps) => {
+  const page = Number(searchParams.page) || 1;
   const res = await fetch(
     `http://localhost:3000/api/products?page=${page}&limit=9`
   );
@@ -35,7 +40,11 @@ const AllProducts = async () => {
         )}
       </div>
       <div className="flex justify-center w-full">
-        <LoadMore onLoadMore={() => page++} />
+        <Link href={`?page=${page + 1}`}>
+          <button className="mt-6 px-4 py-2 bg-[#dc2626] text-white rounded hover:bg-red-700">
+            Load More
+          </button>
+        </Link>
       </div>
     </div>
   );

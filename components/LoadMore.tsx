@@ -1,15 +1,14 @@
 "use client";
-
 import React from "react";
 
 interface Props {
-  onLoadMore: () => void;
+  page: number;
 }
 
-const LoadMore = ({ onLoadMore }: Props) => {
+const LoadMore = ({ page }: Props) => {
   return (
     <button
-      onClick={onLoadMore}
+      onClick={() => page++}
       className="mt-5 px-4 py-2 bg-[#dc2626] rounded-full"
     >
       Load more
