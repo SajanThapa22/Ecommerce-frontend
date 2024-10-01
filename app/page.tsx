@@ -49,7 +49,7 @@ function Home({ addToCart }: Props) {
     const fetchProducts = async () => {
       try {
         const res = await fetch(
-          "http://localhost:3000/api/products?page=4&limit=3"
+          "http://localhost:3000/api/products?page=2&limit=3"
         );
         const data = await res.json();
         setFeaturedProducts(data.results);
@@ -57,7 +57,8 @@ function Home({ addToCart }: Props) {
         console.log(err);
       }
     };
-  });
+    fetchProducts();
+  }, []);
 
   const time = new Date();
   time.setSeconds(time.getSeconds() + 86400); // 24 hours = 86400 seconds
@@ -68,7 +69,7 @@ function Home({ addToCart }: Props) {
   });
   return (
     <div className="w-full mx-auto py-[2rem] px-[7rem] bg-orange-50">
-      <Reveal>
+      <Reveal x={0}>
         <section className="bg-cover bg-center h-[400px] flex items-center justify-center text-center text-white mb-8 bg-gradient-overlay-image">
           <div className="max-w-[500px]">
             <h1 className="text-[2.5rem] md:text-[3rem] mb-[1rem] font-bold">
@@ -94,7 +95,7 @@ function Home({ addToCart }: Props) {
           .toString()
           .padStart(2, "0")}`}</p>
       </div>
-      <Reveal>
+      <Reveal x={75} y={0}>
         <section className="grid grid-cols-responsive gap-[2rem] mb-[2rem] text-black">
           {features.map((f) => {
             const Icon = f.icon;
@@ -106,10 +107,10 @@ function Home({ addToCart }: Props) {
           })}
         </section>
       </Reveal>
-      <Reveal>
+      <Reveal x={-75} y={0}>
         <section className="mb-[32px] w-full text-center text-black">
           <h2 className="text-[32px] font-semibold">Featured Products</h2>
-          <div className="grid grid-cols-responsive">
+          <div className="grid grid-cols-3">
             {featuredProducts?.map((product) => (
               <ProductCard
                 key={product._id}
@@ -123,7 +124,7 @@ function Home({ addToCart }: Props) {
           </div>
         </section>
       </Reveal>
-      <Reveal>
+      <Reveal x={0} y={-75}>
         <section className="p-8 rounded-[8px] text-center text-black bg-gray-100">
           <h2 className="mb-4 text-[32px] font-semibold">
             Subscribe to Our Newsletter

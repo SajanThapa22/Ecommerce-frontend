@@ -24,7 +24,7 @@ const Login = () => {
       const res = await fetch("http://localhost:3000/api/auth", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
         body: JSON.stringify(data),
       });
