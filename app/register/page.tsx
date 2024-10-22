@@ -22,8 +22,12 @@ const Register = () => {
   const password = watch("password");
   const router = useRouter();
 
-  const onSubmit = async (data: FormData) => {
-    const { confirmPassword, ...rest } = data;
+  const onSubmit = async (fieldData: FormData) => {
+    let formData = new FormData();
+    formData.append("name", fieldData.name);
+    formData.append("email", fieldData.email);
+    formData.append("password", fieldData.password);
+
     try {
       if (isValid) {
         const res = await fetch("http://localhost:3000/api/users", {
@@ -31,7 +35,7 @@ const Register = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(rest),
+          body: JSON.stringify(formData),
         });
         if (res.status === 200) {
           console.log("User regeistered successfully!");
