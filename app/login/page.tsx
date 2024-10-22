@@ -19,14 +19,18 @@ const Login = () => {
   const { login } = useAuth();
   const router = useRouter();
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (fieldData: FormData) => {
+    const formData = new FormData();
+    formData.append("email", fieldData.email);
+    formData.append("password", fieldData.password);
+
     try {
       const res = await fetch("http://localhost:3000/api/auth", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
       if (res.status === 200) {
         const { accessToken, refreshToken } = await res.json();
