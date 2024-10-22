@@ -2,11 +2,10 @@ import ProductCard from "@/components/ProductCard";
 import React, { useState, useEffect } from "react";
 import { Product } from "../page";
 import CardSkeleton from "@/components/CardSkeleton";
-import LoadMore from "@/components/LoadMore";
 import Link from "next/link";
 
 interface AllProductsProps {
-  searchParams: { page?: string }; // Accepting page as a query parameter
+  searchParams: { page?: string };
 }
 
 const AllProducts = async ({ searchParams }: AllProductsProps) => {
