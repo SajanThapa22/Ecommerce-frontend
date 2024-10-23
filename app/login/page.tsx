@@ -79,7 +79,7 @@ const Login = () => {
               autoComplete="current-password"
             />
             {errors.password?.type === "required" && (
-              <p className="text-red-700 ml-2">Please enter the password</p>
+              <p className="text-red-700 ml-2">Please enter your password</p>
             )}
           </div>
         </div>
