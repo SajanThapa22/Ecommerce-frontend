@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface FormData {
   email: string;
@@ -35,6 +36,7 @@ const Login = () => {
       if (res.status === 200) {
         const { accessToken, refreshToken } = await res.json();
         login(accessToken, refreshToken);
+        toast.success("Logged in successfully");
         router.push("/");
       }
     } catch (err) {
