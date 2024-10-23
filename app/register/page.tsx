@@ -3,6 +3,7 @@ import Button from "@/components/Button";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 interface FormData {
   name: string;
@@ -39,6 +40,8 @@ const Register = () => {
         });
         if (res.status === 200) {
           console.log("User regeistered successfully!");
+          toast.success("Registered successfully");
+
           router.push("/login");
         }
       }
