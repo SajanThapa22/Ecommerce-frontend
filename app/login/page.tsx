@@ -33,12 +33,13 @@ const Login = () => {
         },
         body: JSON.stringify(formData),
       });
-      if (res.status === 200) {
+      if (res) {
         const { accessToken, refreshToken } = await res.json();
         login(accessToken, refreshToken);
         toast.success("Logged in successfully");
         router.push("/");
       }
+      toast.error("couldn't login");
     } catch (err) {
       console.log(err);
     }
