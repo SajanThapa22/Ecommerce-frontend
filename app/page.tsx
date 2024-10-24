@@ -65,12 +65,18 @@ function Home({ addToCart }: Props) {
   }, []);
 
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 86400); // 24 hours = 86400 seconds
-
+  time.setSeconds(time.getSeconds() + 86400);
   const { seconds, minutes, hours, isRunning } = useTimer({
     expiryTimestamp: time,
     onExpire: () => console.log("Timer expired"),
   });
+
+  const CustomCloseButton = ({ closeToast }: any) => (
+    <IoCloseOutline
+      onClick={closeToast}
+      className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer hover:text-black"
+    />
+  );
 
   const handleToast = () => {
     toast.success("This is a notification!", {
@@ -85,10 +91,11 @@ function Home({ addToCart }: Props) {
         className="absolute top-4 right-4" // Positioning container absolutely at the top-right
         toastClassName={
           () =>
-            "flex p-1 mb-2 min-h-10 rounded-md shadow-lg bg-white text-black h-fit z-[1000]" // Toast styles
+            "relative flex p-1 mb-2 min-h-10 rounded-md shadow-lg bg-white text-gray-700 h-fit z-[1000]" // Toast styles
         }
         bodyClassName="flex items-center"
-        closeButton={true}
+        position="top-left"
+        closeButton={CustomCloseButton}
       />
       <div className="w-full mx-auto py-[2rem] px-[7rem] bg-orange-50">
         <Reveal x={0}>
