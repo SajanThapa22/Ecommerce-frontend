@@ -8,7 +8,7 @@ interface Props {
   y?: number;
 }
 
-const Reveal = ({ children, x = 75, y = 75 }: Props) => {
+const Show = ({ children, x = 75, y = 75 }: Props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -39,4 +39,4 @@ const Reveal = ({ children, x = 75, y = 75 }: Props) => {
   );
 };
 
-export default Reveal;
+export default Show;

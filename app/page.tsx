@@ -5,11 +5,11 @@ import { FaShippingFast, FaMoneyBillWave, FaHeadset } from "react-icons/fa";
 import Link from "next/link";
 import FeatureCard from "@/components/FeatureCard";
 import Button from "@/components/Button";
-import Reveal from "@/components/Reveal";
+import Show from "@/components/Reveal";
 import { useTimer } from "react-timer-hook";
 import ProductCard from "@/components/ProductCard";
 import { CiCircleCheck } from "react-icons/ci";
-import { ToastContainer, toast } from "react-toastify";
+import { Bounce, Flip, ToastContainer, Zoom, toast } from "react-toastify";
 import { IoCloseOutline } from "react-icons/io5";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -74,7 +74,7 @@ function Home({ addToCart }: Props) {
   const CustomCloseButton = ({ closeToast }: any) => (
     <IoCloseOutline
       onClick={closeToast}
-      className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer hover:text-black"
+      className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer hover:text-black size-5"
     />
   );
 
@@ -88,17 +88,17 @@ function Home({ addToCart }: Props) {
   return (
     <>
       <ToastContainer
+        transition={Zoom}
         className="absolute top-4 right-4" // Positioning container absolutely at the top-right
         toastClassName={
           () =>
             "relative flex p-1 mb-2 min-h-10 rounded-md shadow-lg bg-white text-gray-700 h-fit z-[1000]" // Toast styles
         }
         bodyClassName="flex items-center"
-        position="top-left"
         closeButton={CustomCloseButton}
       />
       <div className="w-full mx-auto py-[2rem] px-[7rem] bg-orange-50">
-        <Reveal x={0}>
+        <Show x={0}>
           <section className="bg-cover bg-center h-[400px] flex items-center justify-center text-center text-white mb-8 bg-gradient-overlay-image">
             <div className="max-w-[500px]">
               <h1 className="text-[2.5rem] md:text-[3rem] mb-[1rem] font-bold">
@@ -121,7 +121,7 @@ function Home({ addToCart }: Props) {
               </button>
             </div>
           </section>
-        </Reveal>
+        </Show>
 
         <div className="w-full text-center">
           <p className="text-[32px] text-center text-black">{`${hours
@@ -130,7 +130,7 @@ function Home({ addToCart }: Props) {
             .toString()
             .padStart(2, "0")}`}</p>
         </div>
-        <Reveal x={75} y={0}>
+        <Show x={75} y={0}>
           <section className="grid grid-cols-responsive gap-[2rem] mb-[2rem] text-black">
             {features.map((f) => {
               const Icon = f.icon;
@@ -141,8 +141,8 @@ function Home({ addToCart }: Props) {
               );
             })}
           </section>
-        </Reveal>
-        <Reveal x={-75} y={0}>
+        </Show>
+        <Show x={-75} y={0}>
           <section className="mb-[32px] w-full text-center text-black">
             <h2 className="text-[32px] font-semibold">Featured Products</h2>
             <div className="grid grid-cols-3">
@@ -158,8 +158,8 @@ function Home({ addToCart }: Props) {
               ))}
             </div>
           </section>
-        </Reveal>
-        <Reveal x={0} y={-75}>
+        </Show>
+        <Show x={0} y={-75}>
           <section className="p-8 rounded-[8px] text-center text-black bg-gray-100">
             <h2 className="mb-4 text-[32px] font-semibold">
               Subscribe to Our Newsletter
@@ -180,7 +180,7 @@ function Home({ addToCart }: Props) {
               />
             </form>
           </section>
-        </Reveal>
+        </Show>
       </div>
     </>
   );
