@@ -8,8 +8,9 @@ import Button from "@/components/Button";
 import Reveal from "@/components/Reveal";
 import { useTimer } from "react-timer-hook";
 import ProductCard from "@/components/ProductCard";
-import { toast, ToastContainer } from "react-toastify";
 import { CiCircleCheck } from "react-icons/ci";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export interface Props {
   addToCart: () => void;
@@ -72,20 +73,20 @@ function Home({ addToCart }: Props) {
 
   const handleToast = () => {
     toast.success("This is a notification!", {
-      icon: <CiCircleCheck className="size-7 text-white" />,
-      autoClose: 3000,
+      icon: <CiCircleCheck className="size-8 text-green-500" />,
+      autoClose: 8000,
       hideProgressBar: true,
     });
   };
   return (
     <>
       <ToastContainer
-        className="absolute top-4 right-4 " // Positioning container absolutely at the top-right
+        className="absolute top-4 right-4" // Positioning container absolutely at the top-right
         toastClassName={
           () =>
-            "relative flex p-4 min-h-10 rounded-md shadow-lg bg-green-500 text-white h-[50px] z-[1000]" // Toast styles
+            "flex p-1 mb-2 min-h-10 rounded-md shadow-lg bg-white text-black h-fit z-[1000]" // Toast styles
         }
-        bodyClassName="flex items-center"
+        bodyClassName=" items-center"
         closeButton={true}
       />
       <div className="w-full mx-auto py-[2rem] px-[7rem] bg-orange-50">
