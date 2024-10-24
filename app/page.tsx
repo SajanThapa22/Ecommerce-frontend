@@ -10,6 +10,7 @@ import { useTimer } from "react-timer-hook";
 import ProductCard from "@/components/ProductCard";
 import { CiCircleCheck } from "react-icons/ci";
 import { ToastContainer, toast } from "react-toastify";
+import { IoCloseOutline } from "react-icons/io5";
 import "react-toastify/dist/ReactToastify.css";
 
 export interface Props {
@@ -86,7 +87,7 @@ function Home({ addToCart }: Props) {
           () =>
             "flex p-1 mb-2 min-h-10 rounded-md shadow-lg bg-white text-black h-fit z-[1000]" // Toast styles
         }
-        bodyClassName=" items-center"
+        bodyClassName="flex items-center"
         closeButton={true}
       />
       <div className="w-full mx-auto py-[2rem] px-[7rem] bg-orange-50">
