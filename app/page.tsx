@@ -76,7 +76,7 @@ function Home({ addToCart }: Props) {
   const CustomCloseButton = ({ closeToast }: any) => (
     <IoCloseOutline
       onClick={closeToast}
-      className="absolute top-1/2 transform -translate-y-1/2 right-2 cursor-pointer hover:text-black size-5"
+      className=" my-auto right-2 cursor-pointer hover:text-black size-5"
     />
   );
 
@@ -88,7 +88,7 @@ function Home({ addToCart }: Props) {
         ) : (
           <IoIosCloseCircleOutline className="size-8 text-red-500" />
         ),
-      autoClose: 2000,
+      autoClose: 6000,
       hideProgressBar: true,
       progressClassName: "!bg-green-500 !h-1",
     });
@@ -100,7 +100,7 @@ function Home({ addToCart }: Props) {
         transition={Zoom}
         className="absolute top-4 right-4"
         toastClassName={() =>
-          "relative flex p-1 mb-2 min-h-10 rounded-md shadow-lg bg-white text-gray-700 h-fit z-[1000] overflow-hidden"
+          "relative flex p-1 mb-2 min-h-10 w-fit px-2 ml-auto rounded-md shadow-lg bg-white text-gray-700 h-fit z-[1000] overflow-hidden"
         }
         bodyClassName="flex items-center"
         closeButton={CustomCloseButton}
@@ -122,7 +122,7 @@ function Home({ addToCart }: Props) {
                 Shop Now
               </Link>
               <button
-                onClick={() => handleToast("success", "Task failed")}
+                onClick={() => handleToast("error", "Task failed")}
                 className="p-4 bg-blue-500 text-white"
               >
                 Toast
