@@ -80,14 +80,20 @@ function Home({ addToCart }: Props) {
     />
   );
 
-  const handleToast = () => {
-    toast("This is a notification!", {
-      icon: <CiCircleCheck className="size-8 text-green-500" />,
+  const handleToast = (type: "success" | "error", message: string) => {
+    toast(message, {
+      icon:
+        type === "success" ? (
+          <CiCircleCheck className="size-8 text-green-500" />
+        ) : (
+          <IoIosCloseCircleOutline className="size-8 text-red-500" />
+        ),
       autoClose: 2000,
-      hideProgressBar: false,
+      hideProgressBar: true,
       progressClassName: "!bg-green-500 !h-1",
     });
   };
+
   return (
     <>
       <ToastContainer
@@ -116,7 +122,7 @@ function Home({ addToCart }: Props) {
                 Shop Now
               </Link>
               <button
-                onClick={() => handleToast()}
+                onClick={() => handleToast("success", "Task failed")}
                 className="p-4 bg-blue-500 text-white"
               >
                 Toast
