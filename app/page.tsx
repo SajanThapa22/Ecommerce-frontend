@@ -11,6 +11,8 @@ import ProductCard from "@/components/ProductCard";
 import { CiCircleCheck } from "react-icons/ci";
 import { Bounce, Flip, ToastContainer, Zoom, toast } from "react-toastify";
 import { IoCloseOutline } from "react-icons/io5";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+
 import "react-toastify/dist/ReactToastify.css";
 
 export interface Props {
@@ -79,20 +81,20 @@ function Home({ addToCart }: Props) {
   );
 
   const handleToast = () => {
-    toast.success("This is a notification!", {
+    toast("This is a notification!", {
       icon: <CiCircleCheck className="size-8 text-green-500" />,
-      autoClose: 8000,
-      hideProgressBar: true,
+      autoClose: 2000,
+      hideProgressBar: false,
+      progressClassName: "!bg-green-500 !h-1",
     });
   };
   return (
     <>
       <ToastContainer
         transition={Zoom}
-        className="absolute top-4 right-4" // Positioning container absolutely at the top-right
-        toastClassName={
-          () =>
-            "relative flex p-1 mb-2 min-h-10 rounded-md shadow-lg bg-white text-gray-700 h-fit z-[1000]" // Toast styles
+        className="absolute top-4 right-4"
+        toastClassName={() =>
+          "relative flex p-1 mb-2 min-h-10 rounded-md shadow-lg bg-white text-gray-700 h-fit z-[1000] overflow-hidden"
         }
         bodyClassName="flex items-center"
         closeButton={CustomCloseButton}
