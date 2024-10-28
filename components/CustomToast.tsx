@@ -26,7 +26,14 @@ export const showToast = ({ type, message }: ToastProps) => {
       ),
     autoClose: 6000,
     hideProgressBar: true,
-    progressClassName: "!bg-green-500 !h-1",
+  });
+};
+
+export const showSuccessToast = ({ message }: ToastProps) => {
+  toast(message, {
+    icon: <CiCircleCheck className="size-8 text-green-500" />,
+    autoClose: 6000,
+    hideProgressBar: true,
   });
 };
 
