@@ -9,46 +9,37 @@ interface ToastProps {
   message: string;
 }
 
-const CustomToast = ({ type, message }: ToastProps) => {
-  const CustomCloseButton = ({ closeToast }: any) => (
-    <IoCloseOutline
-      onClick={closeToast}
-      className=" my-auto right-2 cursor-pointer hover:text-black size-5"
-    />
-  );
+const CustomCloseButton = ({ closeToast }: any) => (
+  <IoCloseOutline
+    onClick={closeToast}
+    className=" my-auto right-2 cursor-pointer hover:text-black size-5"
+  />
+);
 
-  const handleToast = () => {
-    toast(message, {
-      icon:
-        type === "success" ? (
-          <CiCircleCheck className="size-8 text-green-500" />
-        ) : (
-          <IoIosCloseCircleOutline className="size-8 text-red-500" />
-        ),
-      autoClose: 7000,
-      hideProgressBar: true,
-    });
-  };
-
-  useEffect(() => {
-    if (type) {
-      handleToast();
-    }
-  }, [type]);
-
-  return (
-    <div>
-      <ToastContainer
-        transition={Zoom}
-        className="absolute top-4 right-4"
-        toastClassName={() =>
-          "relative flex p-1 mb-2 min-h-10 w-fit px-2 ml-auto rounded-md shadow-lg bg-white text-gray-700 h-fit z-[1000] border-[3px] border-[#dc292929] overflow-hidden"
-        }
-        bodyClassName="flex items-center"
-        closeButton={CustomCloseButton}
-      />
-    </div>
-  );
+export const showToast = ({ type, message }: ToastProps) => {
+  toast(message, {
+    icon:
+      type === "success" ? (
+        <CiCircleCheck className="size-8 text-green-500" />
+      ) : (
+        <IoIosCloseCircleOutline className="size-8 text-red-500" />
+      ),
+    autoClose: 6000,
+    hideProgressBar: true,
+    progressClassName: "!bg-green-500 !h-1",
+  });
 };
+
+const CustomToast = () => (
+  <ToastContainer
+    transition={Zoom}
+    className="absolute top-4 right-4"
+    toastClassName={() =>
+      "text-nowrap flex p-1 mb-2 min-h-10 w-fit px-2 ml-auto rounded-md shadow-lg bg-white text-gray-700 h-fit z-[1000] overflow-hidden"
+    }
+    bodyClassName="flex items-center"
+    closeButton={CustomCloseButton}
+  />
+);
 
 export default CustomToast;

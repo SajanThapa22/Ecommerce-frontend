@@ -14,8 +14,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
 import "react-toastify/dist/ReactToastify.css";
-import CustomToast from "@/components/CustomToast";
-
+import CustomToast, { showToast } from "@/components/CustomToast";
 export interface Props {
   addToCart: () => void;
   featuredProducts: Product[];
@@ -74,12 +73,13 @@ function Home({ addToCart }: Props) {
     onExpire: () => console.log("Timer expired"),
   });
 
-  const handleToast = (type: "success" | "fail", message: string) => {
-    return <CustomToast type={type} message={message} />;
+  const showSuccessToast = () => {
+    showToast({ type: "success", message: "Operation was successful!" });
   };
 
   return (
     <>
+      <CustomToast />
       <div className="w-full mx-auto py-[2rem] px-[7rem] bg-orange-50">
         <Show x={0}>
           <section className="bg-cover bg-center h-[400px] flex items-center justify-center text-center text-white mb-8 bg-gradient-overlay-image">
@@ -97,9 +97,7 @@ function Home({ addToCart }: Props) {
                 Shop Now
               </Link>
               <button
-                onClick={() => {
-                  handleToast("fail", "Task failed");
-                }}
+                onClick={showSuccessToast}
                 className="p-4 bg-blue-500 text-white"
               >
                 Toast
