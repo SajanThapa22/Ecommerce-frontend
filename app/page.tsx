@@ -14,6 +14,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
 import "react-toastify/dist/ReactToastify.css";
+import CustomToast from "@/components/CustomToast";
 
 export interface Props {
   addToCart: () => void;
@@ -73,38 +74,12 @@ function Home({ addToCart }: Props) {
     onExpire: () => console.log("Timer expired"),
   });
 
-  const CustomCloseButton = ({ closeToast }: any) => (
-    <IoCloseOutline
-      onClick={closeToast}
-      className=" my-auto right-2 cursor-pointer hover:text-black size-5"
-    />
-  );
-
-  const handleToast = (type: "success" | "error", message: string) => {
-    toast(message, {
-      icon:
-        type === "success" ? (
-          <CiCircleCheck className="size-8 text-green-500" />
-        ) : (
-          <IoIosCloseCircleOutline className="size-8 text-red-500" />
-        ),
-      autoClose: 6000,
-      hideProgressBar: true,
-      progressClassName: "!bg-green-500 !h-1",
-    });
+  const handleToast = (type: "success" | "fail", message: string) => {
+    return <CustomToast type={type} message={message} />;
   };
 
   return (
     <>
-      <ToastContainer
-        transition={Zoom}
-        className="absolute top-4 right-4"
-        toastClassName={() =>
-          "relative flex p-1 mb-2 min-h-10 w-fit px-2 ml-auto rounded-md shadow-lg bg-white text-gray-700 h-fit z-[1000] overflow-hidden"
-        }
-        bodyClassName="flex items-center"
-        closeButton={CustomCloseButton}
-      />
       <div className="w-full mx-auto py-[2rem] px-[7rem] bg-orange-50">
         <Show x={0}>
           <section className="bg-cover bg-center h-[400px] flex items-center justify-center text-center text-white mb-8 bg-gradient-overlay-image">
@@ -122,7 +97,9 @@ function Home({ addToCart }: Props) {
                 Shop Now
               </Link>
               <button
-                onClick={() => handleToast("error", "Task failed")}
+                onClick={() => {
+                  handleToast("fail", "Task failed");
+                }}
                 className="p-4 bg-blue-500 text-white"
               >
                 Toast
