@@ -5,7 +5,6 @@ import { IoCloseOutline } from "react-icons/io5";
 import { toast, ToastContainer, Zoom } from "react-toastify";
 
 interface ToastProps {
-  type: "success" | "fail";
   message: string;
 }
 
@@ -16,24 +15,24 @@ const CustomCloseButton = ({ closeToast }: any) => (
   />
 );
 
-export const showToast = ({ type, message }: ToastProps) => {
-  toast(message, {
-    icon:
-      type === "success" ? (
-        <CiCircleCheck className="size-8 text-green-500" />
-      ) : (
-        <IoIosCloseCircleOutline className="size-8 text-red-500" />
-      ),
-    autoClose: 6000,
-    hideProgressBar: true,
-  });
+const toastData = {
+  autoClose: 6000,
+  hideProgressBar: true,
 };
 
 export const showSuccessToast = ({ message }: ToastProps) => {
   toast(message, {
     icon: <CiCircleCheck className="size-8 text-green-500" />,
-    autoClose: 6000,
-    hideProgressBar: true,
+    autoClose: toastData.autoClose,
+    hideProgressBar: toastData.hideProgressBar,
+  });
+};
+
+export const showFailToast = ({ message }: ToastProps) => {
+  toast(message, {
+    icon: <IoIosCloseCircleOutline className="size-8 text-red-500" />,
+    autoClose: toastData.autoClose,
+    hideProgressBar: toastData.hideProgressBar,
   });
 };
 
