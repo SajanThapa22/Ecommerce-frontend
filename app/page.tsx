@@ -160,7 +160,7 @@ function Home({ addToCart }: Props) {
               />
               <Button
                 text="subscribe"
-                style="bg-black text-white w-full md:w-fit h-fit py-[.9rem] px-[1.8rem]"
+                className="bg-black text-white w-full md:w-fit h-fit py-[.9rem] px-[1.8rem]"
               />
             </form>
           </section>
