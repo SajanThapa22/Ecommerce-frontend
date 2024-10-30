@@ -131,14 +131,7 @@ function Home({ addToCart }: Props) {
             <h2 className="text-[32px] font-semibold">Featured Products</h2>
             <div className="grid grid-cols-3">
               {featuredProducts?.map((product) => (
-                <ProductCard
-                  key={product._id}
-                  _id={product._id}
-                  name={product.name}
-                  description={product.description}
-                  price={product.price}
-                  image={product.image}
-                />
+                <ProductCard product={product} />
               ))}
             </div>
           </section>

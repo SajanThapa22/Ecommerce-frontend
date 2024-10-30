@@ -1,18 +1,22 @@
+// components/LoadMore.tsx
 "use client";
-import React from "react";
 
-interface Props {
-  page: number;
+import React from "react";
+import Link from "next/link";
+
+interface LoadMoreProps {
+  currentPage: number;
 }
 
-const LoadMore = ({ page }: Props) => {
+const LoadMore: React.FC<LoadMoreProps> = ({ currentPage }) => {
   return (
-    <button
-      onClick={() => page++}
-      className="mt-5 px-4 py-2 bg-[#dc2626] rounded-full"
-    >
-      Load more
-    </button>
+    <div className="flex justify-center w-full">
+      <Link href={`?page=${currentPage + 1}`}>
+        <button className="mt-6 px-4 py-2 bg-[#dc2626] text-white rounded hover:bg-red-700">
+          Load More
+        </button>
+      </Link>
+    </div>
   );
 };
 
