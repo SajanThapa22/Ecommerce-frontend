@@ -53,7 +53,7 @@ const AddToCart = ({ productId }: Props) => {
     >
       {isLoading ? (
         <div className="flex gap-2 justify-center items-center">
-          <Spinner /> <p>Adding...</p>
+          <Spinner /> <p>Adding to cart...</p>
         </div>
       ) : (
         <p>Add to Cart</p>
