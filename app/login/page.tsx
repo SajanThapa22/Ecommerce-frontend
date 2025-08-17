@@ -1,53 +1,53 @@
 "use client";
-import Button from "@/components/Button";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { useAuth } from "../context/AuthContext";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
+// import Button from "@/components/Button";
+// import Link from "next/link";
+// import { useForm } from "react-hook-form";
+// import { useAuth } from "../context/AuthContext";
+// import { useRouter } from "next/navigation";
+// import toast from "react-hot-toast";
 
-interface FormData {
-  email: string;
-  password: string;
-}
+// interface FormData {
+//   email: string;
+//   password: string;
+// }
 
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useForm<FormData>({ mode: "all" });
-  const { login } = useAuth();
-  const router = useRouter();
+  //   const {
+  //     register,
+  //     handleSubmit,
+  //     formState: { errors, isValid },
+  //   } = useForm<FormData>({ mode: "all" });
+  //   const { login } = useAuth();
+  //   const router = useRouter();
 
-  const onSubmit = async (fieldData: FormData) => {
-    const formData = new FormData();
-    formData.append("email", fieldData.email);
-    formData.append("password", fieldData.password);
+  //   const onSubmit = async (fieldData: FormData) => {
+  //     const formData = new FormData();
+  //     formData.append("email", fieldData.email);
+  //     formData.append("password", fieldData.password);
 
-    try {
-      const res = await fetch("http://localhost:3000/api/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: JSON.stringify(formData),
-      });
-      if (res) {
-        const { accessToken, refreshToken } = await res.json();
-        login(accessToken, refreshToken);
-        toast.success("Logged in successfully");
-        router.push("/");
-      }
-      toast.error("couldn't login");
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     try {
+  //       const res = await fetch("http://localhost:3000/api/auth", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/x-www-form-urlencoded",
+  //         },
+  //         body: JSON.stringify(formData),
+  //       });
+  //       if (res) {
+  //         const { accessToken, refreshToken } = await res.json();
+  //         login(accessToken, refreshToken);
+  //         toast.success("Logged in successfully");
+  //         router.push("/");
+  //       }
+  //       toast.error("couldn't login");
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
 
   return (
     <div className="w-full h-screen flex items-center px-10">
-      <form
+      {/* <form
         onSubmit={handleSubmit(onSubmit)}
         className="rounded-[16px] bg-gray-400 px-5 py-[30px] w-[350px] xl:w-[400px] 2xl:w-[600px] mx-auto my-auto grid gap-10 2xl:gap-14"
       >
@@ -96,7 +96,7 @@ const Login = () => {
             </Link>
           </p>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 };

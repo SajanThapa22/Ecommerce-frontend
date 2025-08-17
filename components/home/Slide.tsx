@@ -16,24 +16,26 @@ interface Props {
 
 const Slide = ({ slide }: Props) => {
   return (
-    <div className="grid grid-cols-2 items-center gap-5 justify-between py-12 px-12 h-[350px]">
-      <div className="flex flex-col gap-5">
-        <div className="flex items-center gap-6">
+    <div className="grid grid-cols-2 items-center gap-5 justify-between py-4 px-4 min-[500px]:py-6 min-[800px]:py-8 min-[1200px]:py-12 min-[1200px]:px-12 h-[270px] min-[380px]:h-[300px] md:h-[344px]">
+      <div className="flex flex-col gap-3 min-[660px]:gap-5">
+        <div className="flex items-center gap-3 min-[660px]:gap-6">
           <Image
             alt="apple logo"
-            height={49}
-            width={40}
+            height={32}
+            width={30}
             src={slide.companyLogo}
           />
-          <span className="text-[16px] text-white">{slide.modelName}</span>
+          <span className="text-[12px] min-[660px]:text-sm text-white">
+            {slide.modelName}
+          </span>
         </div>
 
-        <span className="text-wrap text-white font-semibold text-5xl">
+        <span className="text-wrap text-white font-semibold text-lg min-[660px]:text-xl md:text-3xl  min-[1250px]:text-5xl">
           {slide.offerTitle}
         </span>
 
         <Link href={"/product/:id"} className="flex gap-2 items-center">
-          <span className="text-white font-medium text-[16px] py-1 border-b border-b-white">
+          <span className="text-white font-medium text-sm min-[660px]:text-[16px] py-1 border-b border-b-white">
             Shop Now
           </span>
           <IconArrowRight />

@@ -1,6 +1,5 @@
 // components/Carousel.tsx
 import Slider from "react-slick";
-import Image from "next/image";
 import {
   appleLogo,
   chair,
@@ -89,7 +88,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="pl-11 pt-10 h-full overflow-hidden">
+    <div className="p-0 min-[1250px]:pl-11 min-[1250px]:pt-10 h-full overflow-hidden">
       <Slider {...settings} className="h-full bg-black">
         {slideData.map((item, index) => (
           <Slide slide={item} key={index} />

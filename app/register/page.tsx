@@ -1,58 +1,58 @@
 "use client";
-import Button from "@/components/Button";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
+// import Button from "@/components/Button";
+// import Link from "next/link";
+// import { useRouter } from "next/router";
+// import { useForm } from "react-hook-form";
+// import toast from "react-hot-toast";
 
-interface FormData {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+// interface FormData {
+//   name: string;
+//   email: string;
+//   password: string;
+//   confirmPassword: string;
+// }
 
 const Register = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors, isValid },
-  } = useForm<FormData>({ mode: "all" });
+  //   const {
+  //     register,
+  //     handleSubmit,
+  //     watch,
+  //     formState: { errors, isValid },
+  //   } = useForm<FormData>({ mode: "all" });
 
-  const password = watch("password");
-  const router = useRouter();
+  //   const password = watch("password");
+  //   const router = useRouter();
 
-  const onSubmit = async (fieldData: FormData) => {
-    let formData = new FormData();
-    formData.append("name", fieldData.name);
-    formData.append("email", fieldData.email);
-    formData.append("password", fieldData.password);
+  //   const onSubmit = async (fieldData: FormData) => {
+  //     let formData = new FormData();
+  //     formData.append("name", fieldData.name);
+  //     formData.append("email", fieldData.email);
+  //     formData.append("password", fieldData.password);
 
-    try {
-      if (isValid) {
-        const res = await fetch("http://localhost:3000/api/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
-        if (res.status === 200) {
-          console.log("User regeistered successfully!");
-          toast.success("Registered successfully");
+  //     try {
+  //       if (isValid) {
+  //         const res = await fetch("http://localhost:3000/api/users", {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify(formData),
+  //         });
+  //         if (res.status === 200) {
+  //           console.log("User regeistered successfully!");
+  //           toast.success("Registered successfully");
 
-          router.push("/login");
-        }
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //           router.push("/login");
+  //         }
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
 
   return (
     <div className="w-full h-screen flex items-center px-10">
-      <form
+      {/* <form
         onSubmit={handleSubmit(onSubmit)}
         className="rounded-[16px] bg-gray-400 px-5 py-[30px] w-[350px] xl:w-[400px] 2xl:w-[600px] mx-auto my-auto grid gap-10 2xl:gap-14"
       >
@@ -147,7 +147,7 @@ const Register = () => {
             </Link>
           </p>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 };

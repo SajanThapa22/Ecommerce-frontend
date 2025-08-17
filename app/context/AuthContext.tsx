@@ -7,16 +7,18 @@ import {
   useEffect,
   useContext,
 } from "react";
-import { jwtDecode } from "jwt-decode";
+// import { jwtDecode } from "jwt-decode";
 
 interface AuthContextType {
   login: (accessToken: string, refreshToken: string) => void;
   logout: () => void;
+  accessToken: string | null;
+  refreshToken: string | null;
 }
 
-interface AuthProviderProps {
-  children: ReactNode;
-}
+// interface AuthProviderProps {
+//   children: ReactNode;
+// }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -34,11 +36,11 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     }
   }, []);
 
-  const isTokenValid = (token: string | null): boolean => {
-    if (!token) return false;
-    const decoded = jwtDecode<{ exp: number }>(token);
-    return decoded.exp * 1000 > Date.now();
-  };
+  // const isTokenValid = (token: string | null): boolean => {
+  //   if (!token) return false;
+  //   const decoded = jwtDecode<{ exp: number }>(token);
+  //   return decoded.exp * 1000 > Date.now();
+  // };
 
   const login = (newAccessToken: string, newRefreshToken: string) => {
     if (typeof window !== "undefined") {
@@ -63,6 +65,8 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       value={{
         login,
         logout,
+        accessToken,
+        refreshToken,
       }}
     >
       {children}
