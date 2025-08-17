@@ -11,6 +11,25 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        foundation: {
+          gray: {
+            100: "#fafafa",
+            200: "#f5f5f5",
+            300: "#e0e0e0",
+            400: "#2f2e30",
+          },
+          red: {
+            100: "#ffe5e5",
+            200: "#fbbebe",
+            300: "#f28a8a",
+            400: "#e85c5c",
+            500: "#db4444", // primary
+            600: "#c73c3c",
+            700: "#a93030",
+            800: "#8b2727",
+            900: "#701e1e",
+          },
+        },
       },
       backgroundImage: {
         "gradient-overlay-image":

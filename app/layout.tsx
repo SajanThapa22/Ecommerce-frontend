@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
 import { AuthProvider } from "./context/AuthContext";
+import { Poppins } from "next/font/google";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Game shop",
@@ -14,18 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={poppins.className}>
       <head>
         <link
+          href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
         />
       </head>
       <body>
         <AuthProvider>
-          <header>
-            <Header username="" />
-          </header>
           <main className="h-full">{children}</main>
         </AuthProvider>
       </body>
