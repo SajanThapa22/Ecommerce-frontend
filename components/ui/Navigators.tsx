@@ -1,0 +1,41 @@
+import { IconArrowLeft, IconArrowRight } from "@/public/assets/icons";
+import React, { MutableRefObject } from "react";
+
+interface Props {
+  scrollRef: MutableRefObject<HTMLElement | null>;
+}
+
+const Navigators = ({ scrollRef }: Props) => {
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -280, behavior: "smooth" });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 280, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex items-center gap-2">
+        <button
+          onClick={scrollLeft}
+          className="bg-foundation-gray-200 size-[46px] rounded-full flex items-center justify-center"
+        >
+          <IconArrowLeft className="text-black text-sm" />
+        </button>
+        <button
+          onClick={scrollRight}
+          className="bg-foundation-gray-200 size-[46px] rounded-full flex items-center justify-center"
+        >
+          <IconArrowRight className="text-black text-sm" />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Navigators;

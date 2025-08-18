@@ -29,6 +29,9 @@ const config: Config = {
             800: "#8b2727",
             900: "#701e1e",
           },
+          orange: {
+            500: "#ffad33",
+          },
         },
       },
       backgroundImage: {
@@ -47,6 +50,20 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }: any) {
+      const newUtilities = {
+        ".hide-scrollbar": {
+          "-ms-overflow-style": "none" /* IE and Edge */,
+          "scrollbar-width": "none" /* Firefox */,
+        },
+        ".hide-scrollbar::-webkit-scrollbar": {
+          display: "none" /* Chrome, Safari, and Opera */,
+        },
+      };
+
+      addUtilities(newUtilities, ["responsive"]);
+    },
+  ],
 };
 export default config;

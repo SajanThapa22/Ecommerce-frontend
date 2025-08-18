@@ -34,14 +34,16 @@ const NavbarBig = ({ navLinks }: Props) => {
       </nav>
 
       <div className="flex justify-center gap-6 items-center">
-        <div className="w-fit bg-foundation-gray-200 rounded-md px-5 py-[10px] gap-[34px] flex items-center">
+        <form className="w-fit bg-foundation-gray-200 rounded-md px-5 py-[10px] gap-[34px] flex items-center">
           <input
             placeholder="What are you looking for?"
             className="w-auto border-none outline-none focus:outline-none bg-transparent placeholder-gray-400 text-foundation-gray-400"
             size={22}
           />
-          <IconSearch className="text-black text-2xl" />
-        </div>
+          <button type="submit">
+            <IconSearch className="text-black text-2xl" />
+          </button>
+        </form>
 
         <div className="gap-4 flex items-center">
           <IconHeart className="text-[28px] text-black cursor-pointer" />

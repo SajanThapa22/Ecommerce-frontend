@@ -23,6 +23,7 @@ import IconSend from "./icon-send.svg";
 import IconArrowRight from "./icons arrow-right.svg";
 import IconArrowLeft from "./icons_arrow-left.svg";
 import IconUser from "./user.svg";
+import IconStar from "./star.svg";
 
 export {
   IconCart,
@@ -50,4 +51,5 @@ export {
   IconArrowRight,
   IconArrowLeft,
   IconUser,
+  IconStar,
 };

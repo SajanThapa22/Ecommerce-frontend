@@ -24,7 +24,7 @@ const navLinks = [
 const Navbar = () => {
   return (
     <>
-      <div className="hidden min-[1250px]:block sticky top-0 z-[99999] shadow-sm">
+      <div className="hidden min-[1250px]:block z-[99999] shadow-sm">
         <NavbarBig navLinks={navLinks} />
       </div>
       <div className="block min-[1250px]:hidden sticky top-0 z-[99999] shadow-sm">
