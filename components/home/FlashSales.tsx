@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from "react";
 import Title from "../ui/Title";
 import Navigators from "../ui/Navigators";

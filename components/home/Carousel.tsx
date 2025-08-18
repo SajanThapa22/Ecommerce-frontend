@@ -1,4 +1,5 @@
-// components/Carousel.tsx
+"use client";
+
 import Slider from "react-slick";
 import {
   appleLogo,

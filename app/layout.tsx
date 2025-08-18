@@ -4,6 +4,8 @@ import { AuthProvider } from "./context/AuthContext";
 import { Poppins } from "next/font/google";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import TopBanner from "@/components/common/TopBanner";
+import Navbar from "@/components/common/Navbar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -30,6 +32,8 @@ export default function RootLayout({
       </head>
       <body>
         <AuthProvider>
+          <TopBanner />
+          <Navbar />
           <main className="h-full">{children}</main>
         </AuthProvider>
       </body>
