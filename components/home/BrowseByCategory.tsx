@@ -31,7 +31,7 @@ const BrowseByCategory = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="section-pb border-b border-b-gray-400 section-mt section-margin-x relative">
+    <section className="section-mt section-margin-x relative">
       <Title
         heading="Browse by Category"
         subHeading="Categories"

@@ -6,17 +6,19 @@ import Navigators from "../ui/Navigators";
 import { products } from "@/api/types/Product";
 import ProductCard from "../ui/ProductCard";
 import Button from "../ui/Button";
+import FlashSalesTimer from "../ui/FlashSalesTimer";
 
 const FlashSales = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="section-mt  section-mb">
+    <section className="section-mt">
       <div className="section-padding-x">
         <Title
           heading="Flash Sales"
           subHeading={`Today's`}
           rightChild={<Navigators scrollRef={scrollRef} />}
+          leftChild={<FlashSalesTimer />}
         />
       </div>
 

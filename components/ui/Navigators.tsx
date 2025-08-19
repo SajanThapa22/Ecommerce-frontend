@@ -23,15 +23,15 @@ const Navigators = ({ scrollRef }: Props) => {
       <div className="flex items-center gap-2">
         <button
           onClick={scrollLeft}
-          className="bg-foundation-gray-200 size-[46px] rounded-full flex items-center justify-center"
+          className="bg-foundation-gray-200 size-9 lg:size-[46px] rounded-full flex items-center justify-center"
         >
-          <IconArrowLeft className="text-black text-sm" />
+          <IconArrowLeft className="text-black  w-4 lg:w-[24px]" />
         </button>
         <button
           onClick={scrollRight}
-          className="bg-foundation-gray-200 size-[46px] rounded-full flex items-center justify-center"
+          className="bg-foundation-gray-200 size-9 lg:size-[46px] rounded-full flex items-center justify-center"
         >
-          <IconArrowRight className="text-black text-sm" />
+          <IconArrowRight className="text-black  w-4 lg:w-[24px]" />
         </button>
       </div>
     </div>

@@ -8,7 +8,7 @@ import { bestSellingProducts } from "@/api/types/Product";
 
 const BestSellingProducts = () => {
   return (
-    <div className="section-mt section-margin-x section-pb">
+    <div className="section-mt section-margin-x">
       <Title
         heading="Best Selling Products"
         subHeading="This month"

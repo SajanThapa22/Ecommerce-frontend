@@ -10,6 +10,7 @@ import bookshelf from "./bookshelf.png";
 import handbag from "./handbag.png";
 import cpuCooler from "./cpu-cooler.png";
 import redJacket from "./red-jacket.png";
+import speaker from "./speaker.png";
 
 export {
   sideImage,
@@ -24,4 +25,5 @@ export {
   handbag,
   cpuCooler,
   redJacket,
+  speaker,
 };

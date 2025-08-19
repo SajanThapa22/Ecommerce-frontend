@@ -32,6 +32,9 @@ const config: Config = {
           orange: {
             500: "#ffad33",
           },
+          green: {
+            500: "#00ff66",
+          },
         },
       },
       backgroundImage: {
@@ -133,7 +136,7 @@ const config: Config = {
             marginTop: "8rem",
           },
           "@screen xl": {
-            marginTop: "70px",
+            marginTop: "100px",
           },
         },
         ".section-pb": {

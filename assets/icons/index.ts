@@ -22,8 +22,8 @@ import IconDelivery from "./icon-delivery.svg";
 import IconMallbag from "./icon-mallbag.svg";
 import IconSearch from "./icon-search.svg";
 import IconSend from "./icon-send.svg";
-import IconArrowRight from "./icons arrow-right.svg";
-import IconArrowLeft from "./icons_arrow-left.svg";
+import IconArrowRight from "./icon-arrow-right.svg";
+import IconArrowLeft from "./icon-arrow-left.svg";
 import IconUser from "./user.svg";
 import IconStar from "./star.svg";
 
