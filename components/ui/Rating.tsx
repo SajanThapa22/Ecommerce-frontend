@@ -16,11 +16,13 @@ const Rating = ({ rating }: Props) => {
       {Array.from({ length: Math.floor(rating) }).map((_, index) => (
         <FaStar
           key={index}
-          className={cn("text-foundation-orange-500 text-xl")}
+          className={cn("text-foundation-orange-500 text-lg md:text-xl")}
         />
       ))}
       {moreThanHalf && (
-        <FaStarHalfAlt className={cn("text-foundation-orange-500 text-xl")} />
+        <FaStarHalfAlt
+          className={cn("text-foundation-orange-500 text-lg md:text-xl")}
+        />
       )}
 
       {Array.from({
@@ -30,7 +32,7 @@ const Rating = ({ rating }: Props) => {
       }).map((_, index) => (
         <FaStar
           key={index}
-          className={cn("text-foundation-gray-300 text-xl")}
+          className={cn("text-foundation-gray-300 text-lg md:text-xl")}
         />
       ))}
     </div>

@@ -1,11 +1,21 @@
-import { chair, gameConsole, keyboard, laptop, monitor } from "@/assets/images";
+import {
+  bookshelf,
+  chair,
+  cpuCooler,
+  gameConsole,
+  handbag,
+  keyboard,
+  laptop,
+  monitor,
+  redJacket,
+} from "@/assets/images";
 import { StaticImageData } from "next/image";
 
 export interface Product {
   image: StaticImageData;
   name: string;
   originalPrice: number;
-  priceAfterDiscount: number;
+  priceAfterDiscount?: number;
   rating: number;
   reviews: number;
   percentOff?: number;
@@ -92,5 +102,39 @@ export const products: Product[] = [
     rating: 4.3,
     reviews: 95,
     percentOff: 20,
+  },
+];
+
+export const bestSellingProducts: Product[] = [
+  {
+    image: redJacket,
+    name: "The north jacket",
+    originalPrice: 360,
+    priceAfterDiscount: 260,
+    rating: 5,
+    reviews: 65,
+  },
+  {
+    image: handbag,
+    name: "Gucci duffle bag",
+    originalPrice: 1160,
+    priceAfterDiscount: 960,
+    rating: 4.5,
+    reviews: 54,
+  },
+  {
+    image: cpuCooler,
+    name: "RGB liquid CPU Cooler",
+    originalPrice: 170,
+    priceAfterDiscount: 160,
+    rating: 5,
+    reviews: 81,
+  },
+  {
+    image: bookshelf,
+    name: "Small Bookshelf",
+    originalPrice: 270,
+    rating: 5,
+    reviews: 96,
   },
 ];

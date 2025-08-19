@@ -6,6 +6,10 @@ import chair from "./chair.png";
 import keyboard from "./keyboard.png";
 import monitor from "./monitor.png";
 import laptop from "./laptop.png";
+import bookshelf from "./bookshelf.png";
+import handbag from "./handbag.png";
+import cpuCooler from "./cpu-cooler.png";
+import redJacket from "./red-jacket.png";
 
 export {
   sideImage,
@@ -16,4 +20,8 @@ export {
   keyboard,
   monitor,
   laptop,
+  bookshelf,
+  handbag,
+  cpuCooler,
+  redJacket,
 };
