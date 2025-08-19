@@ -1,4 +1,4 @@
-import { IconStar } from "@/public/assets/icons";
+import { IconStar } from "@/assets/icons";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";

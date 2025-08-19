@@ -1,10 +1,4 @@
-import {
-  chair,
-  gameConsole,
-  keyboard,
-  laptop,
-  monitor,
-} from "@/public/assets/images";
+import { chair, gameConsole, keyboard, laptop, monitor } from "@/assets/images";
 import { StaticImageData } from "next/image";
 
 export interface Product {

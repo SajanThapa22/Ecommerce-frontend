@@ -2,7 +2,7 @@ import { Product } from "@/api/types/Product";
 import Image from "next/image";
 import React from "react";
 import Rating from "./Rating";
-import { IconHeart, IconView } from "@/public/assets/icons";
+import { IconHeart, IconView } from "@/assets/icons";
 
 interface Props {
   product: Product;
@@ -11,7 +11,7 @@ interface Props {
 const ProductCard = ({ product }: Props) => {
   return (
     <div>
-      <div className="group relative w-[250px] aspect-square overflow-hidden bg-foundation-gray-200 p-8">
+      <div className="group relative w-full aspect-square overflow-hidden bg-foundation-gray-200 p-8">
         <Image
           src={product.image}
           alt="product"

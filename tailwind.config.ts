@@ -64,6 +64,102 @@ const config: Config = {
 
       addUtilities(newUtilities, ["responsive"]);
     },
+    function ({ addUtilities }: any) {
+      addUtilities({
+        ".section-padding-x": {
+          paddingLeft: "1rem",
+          paddingRight: "1rem",
+          "@screen sm": {
+            paddingLeft: "2rem",
+            paddingRight: "2rem",
+          },
+          "@screen md": {
+            paddingLeft: "3rem",
+            paddingRight: "3rem",
+          },
+          "@screen lg": {
+            paddingLeft: "4rem",
+            paddingRight: "4rem",
+          },
+          "@screen xl": {
+            paddingLeft: "135px",
+            paddingRight: "135px",
+          },
+        },
+        ".section-padding-l": {
+          paddingLeft: "1rem",
+          "@screen sm": {
+            paddingLeft: "2rem",
+          },
+          "@screen md": {
+            paddingLeft: "3rem",
+          },
+          "@screen lg": {
+            paddingLeft: "4rem",
+          },
+          "@screen xl": {
+            paddingLeft: "135px",
+          },
+        },
+        ".section-margin-x": {
+          marginLeft: "1rem",
+          marginRight: "1rem",
+          "@screen sm": {
+            marginLeft: "2rem",
+            marginRight: "2rem",
+          },
+          "@screen md": {
+            marginLeft: "3rem",
+            marginRight: "3rem",
+          },
+          "@screen lg": {
+            marginLeft: "4rem",
+            marginRight: "4rem",
+          },
+          "@screen xl": {
+            marginLeft: "135px",
+            marginRight: "135px",
+          },
+        },
+        ".section-mt": {
+          marginTop: "2rem",
+          "@screen sm": {
+            marginTop: "4rem",
+          },
+          "@screen md": {
+            marginTop: "6rem",
+          },
+          "@screen lg": {
+            marginTop: "8rem",
+          },
+          "@screen xl": {
+            marginTop: "70px",
+          },
+        },
+        ".section-pb": {
+          paddingBottom: "2rem",
+          "@screen sm": {
+            paddingBottom: "4rem",
+          },
+          "@screen md": {
+            paddingBottom: "6rem",
+          },
+          "@screen lg": {
+            paddingBottom: "8rem",
+          },
+          "@screen xl": {
+            paddingBottom: "60px",
+          },
+        },
+        ".section-pl": {
+          paddingLeft: "1rem",
+          "@screen sm": { paddingLeft: "2rem" },
+          "@screen md": { paddingLeft: "3rem" },
+          "@screen lg": { paddingLeft: "4rem" },
+          "@screen xl": { paddingLeft: "135px" },
+        },
+      });
+    },
   ],
 };
 export default config;

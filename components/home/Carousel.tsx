@@ -8,7 +8,7 @@ import {
   keyboard,
   laptop,
   monitor,
-} from "@/public/assets/images";
+} from "@/assets/images";
 import { useState } from "react";
 import Slide from "./Slide";
 

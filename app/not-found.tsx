@@ -5,7 +5,7 @@ import React from "react";
 const NotFound = () => {
   return (
     <div className="w-full h-fit px-[135px] py-20">
-      <Breadcrumbs />
+      <Breadcrumbs notFound={true} />
 
       <div className="flex flex-col mx-auto my-auto gap-20 justify-center items-center w-full h-full">
         <div className="flex flex-col gap-5 justify-center items-center">

@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  IconCart,
-  IconHeart,
-  IconSearch,
-  IconUser,
-} from "@/public/assets/icons";
+import { IconCart, IconHeart, IconSearch, IconUser } from "@/assets/icons";
 import Link from "next/link";
 // import { usePathname } from "next/navigation";
 
@@ -21,7 +16,7 @@ const NavbarBig = ({ navLinks }: Props) => {
   //   const isActive = (href: string) => href === pathname;
 
   return (
-    <section className="px-[135px] pb-4 mt-5 flex justify-between items-center border-b border-b-foundation-gray-300">
+    <section className="section-padding-x pb-4 mt-5 flex justify-between items-center border-b border-b-foundation-gray-300">
       <span className="font-bold text-black text-2xl">Exclusive</span>
       <nav className="flex gap-12 justify-between items-center">
         {navLinks.map((item, index) => (

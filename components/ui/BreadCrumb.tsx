@@ -2,7 +2,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Breadcrumbs() {
+interface Props {
+  notFound?: boolean;
+}
+
+export default function Breadcrumbs({ notFound }: Props) {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
 
@@ -18,7 +22,9 @@ export default function Breadcrumbs() {
         return (
           <span key={idx} className="flex items-center gap-1">
             <span className="text-gray-400">/</span>
-            {isLast ? (
+            {notFound ? (
+              <span className="text-black">404 Error</span>
+            ) : isLast ? (
               <span className="text-black">
                 {segment.charAt(0).toUpperCase() + segment.slice(1)}
               </span>

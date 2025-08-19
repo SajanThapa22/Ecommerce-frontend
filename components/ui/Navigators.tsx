@@ -1,20 +1,20 @@
-import { IconArrowLeft, IconArrowRight } from "@/public/assets/icons";
+import { IconArrowLeft, IconArrowRight } from "@/assets/icons";
 import React, { MutableRefObject } from "react";
 
 interface Props {
-  scrollRef: MutableRefObject<HTMLElement | null>;
+  scrollRef?: MutableRefObject<HTMLElement | null>;
 }
 
 const Navigators = ({ scrollRef }: Props) => {
   const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -280, behavior: "smooth" });
+    if (scrollRef?.current) {
+      scrollRef?.current.scrollBy({ left: -280, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 280, behavior: "smooth" });
+    if (scrollRef?.current) {
+      scrollRef?.current.scrollBy({ left: 280, behavior: "smooth" });
     }
   };
 
