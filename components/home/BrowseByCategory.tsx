@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useRef } from "react";
-import Title from "../ui/Title";
 import Navigators from "../ui/Navigators";
-import CategoryCard from "../ui/CategoryCard";
+import CategoryCard from "./CategoryCard";
 
 import {
   CategoryCamera,
@@ -15,6 +14,7 @@ import {
   CategorySmartWatch,
   CategoryTv,
 } from "@/assets/icons";
+import SectionHeader from "../ui/SectionHeader";
 
 const categories = [
   { name: "Phones", icon: CategoryCellphone },
@@ -32,7 +32,7 @@ const BrowseByCategory = () => {
 
   return (
     <section className="section-mt section-margin-x relative">
-      <Title
+      <SectionHeader
         heading="Browse by Category"
         subHeading="Categories"
         rightChild={<Navigators scrollRef={scrollRef} />}

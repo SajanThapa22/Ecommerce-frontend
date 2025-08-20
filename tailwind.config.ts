@@ -89,6 +89,21 @@ const config: Config = {
             paddingRight: "135px",
           },
         },
+        ".section-pt": {
+          paddingTop: "1rem",
+          "@screen sm": {
+            paddingTop: "2rem",
+          },
+          "@screen md": {
+            paddingTop: "3rem",
+          },
+          "@screen lg": {
+            paddingTop: "4rem",
+          },
+          "@screen xl": {
+            paddingTop: "80px",
+          },
+        },
         ".section-padding-l": {
           paddingLeft: "1rem",
           "@screen sm": {

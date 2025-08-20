@@ -38,7 +38,7 @@ const Slide = ({ slide }: Props) => {
           <span className="text-white font-medium text-sm min-[660px]:text-[16px] py-1 border-b border-b-white">
             Shop Now
           </span>
-          <IconArrowRight />
+          <IconArrowRight className="w-6" />
         </Link>
       </div>
 

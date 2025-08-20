@@ -1,15 +1,15 @@
 "use client";
 
 import React from "react";
-import Title from "../ui/Title";
 import Button from "../ui/Button";
 import ProductCard from "../ui/ProductCard";
 import { bestSellingProducts } from "@/api/types/Product";
+import SectionHeader from "../ui/SectionHeader";
 
 const BestSellingProducts = () => {
   return (
     <div className="section-mt section-margin-x">
-      <Title
+      <SectionHeader
         heading="Best Selling Products"
         subHeading="This month"
         rightChild={<Button text="View All" />}

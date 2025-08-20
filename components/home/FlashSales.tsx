@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useRef } from "react";
-import Title from "../ui/Title";
 import Navigators from "../ui/Navigators";
 import { products } from "@/api/types/Product";
 import ProductCard from "../ui/ProductCard";
 import Button from "../ui/Button";
-import FlashSalesTimer from "../ui/FlashSalesTimer";
+import FlashSalesTimer from "./FlashSalesTimer";
+import SectionHeader from "../ui/SectionHeader";
 
 const FlashSales = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -14,7 +14,7 @@ const FlashSales = () => {
   return (
     <section className="section-mt">
       <div className="section-padding-x">
-        <Title
+        <SectionHeader
           heading="Flash Sales"
           subHeading={`Today's`}
           rightChild={<Navigators scrollRef={scrollRef} />}

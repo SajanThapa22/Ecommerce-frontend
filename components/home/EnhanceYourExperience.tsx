@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../ui/Button";
 import { speaker } from "@/assets/images";
 import Image from "next/image";
-import BannerTimer from "../ui/BannerTimer";
+import BannerTimer from "./BannerTimer";
 
 const EnhanceYourExperience = () => {
   return (

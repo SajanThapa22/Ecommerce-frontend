@@ -26,7 +26,7 @@ const NavbarSmall = ({ navLinks }: Props) => {
 
   return (
     <>
-      <nav className="w-full bg-white backdrop-blur-md px-[30px] py-2 text-foundation-gray-g-200 flex items-center justify-between border-b border-gray-100 shadow-sm">
+      <nav className="w-full bg-white backdrop-blur-md px-[16px] py-2 text-foundation-gray-g-200 flex items-center justify-between border-b border-gray-100 shadow-sm">
         <Link href="/" className="flex items-center">
           <span className="font-bold text-base text-black">Exclusive</span>
         </Link>

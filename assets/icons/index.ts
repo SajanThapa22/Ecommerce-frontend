@@ -26,6 +26,7 @@ import IconArrowRight from "./icon-arrow-right.svg";
 import IconArrowLeft from "./icon-arrow-left.svg";
 import IconUser from "./user.svg";
 import IconStar from "./star.svg";
+import IconCustomerService from "./icon-customer-service.svg";
 
 export {
   IconCart,
@@ -49,6 +50,7 @@ export {
   IconWishlist,
   IconHeart,
   IconDelivery,
+  IconCustomerService,
   IconMallbag,
   IconSearch,
   IconSend,

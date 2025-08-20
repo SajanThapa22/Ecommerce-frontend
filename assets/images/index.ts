@@ -11,6 +11,20 @@ import handbag from "./handbag.png";
 import cpuCooler from "./cpu-cooler.png";
 import redJacket from "./red-jacket.png";
 import speaker from "./speaker.png";
+import dogFood from "./dog-food.png";
+import camera from "./camera.png";
+import toyCar from "./toy-car.png";
+import curology from "./curology.png";
+import quiltedJacket from "./quilted-jacket.png";
+import gamepad from "./gamepad.png";
+import footballShoes from "./football-shoes.png";
+import playStation5 from "./playstation5.png";
+import gucciPerfume from "./gucci-perfume.png";
+import amazonSpeakers from "./amazon-speakers.png";
+import womanWearingHat from "./woman-wearing-hat.png";
+import appQRCode from "./app-qr-code.png";
+import googlePlay from "./GooglePlay.png";
+import appStore from "./AppStore.png";
 
 export {
   sideImage,
@@ -26,4 +40,18 @@ export {
   cpuCooler,
   redJacket,
   speaker,
+  dogFood,
+  camera,
+  curology,
+  gamepad,
+  footballShoes,
+  quiltedJacket,
+  toyCar,
+  playStation5,
+  gucciPerfume,
+  amazonSpeakers,
+  womanWearingHat,
+  appQRCode,
+  googlePlay,
+  appStore,
 };

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ReactNode } from "react";
 
 interface Props {
@@ -7,7 +9,12 @@ interface Props {
   heading: string;
 }
 
-const Title = ({ heading, subHeading, leftChild, rightChild }: Props) => {
+const SectionHeader = ({
+  heading,
+  subHeading,
+  leftChild,
+  rightChild,
+}: Props) => {
   return (
     <div className="flex items-end gap-x-25px md:gap-x-[84px] mb-10">
       <div className="flex items-end flex-wrap gap-4 md:gap-[30px] lg:gap-[60px] xl:gap-[87px]">
@@ -31,4 +38,4 @@ const Title = ({ heading, subHeading, leftChild, rightChild }: Props) => {
   );
 };
 
-export default Title;
+export default SectionHeader;

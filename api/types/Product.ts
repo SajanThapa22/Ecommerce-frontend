@@ -1,13 +1,24 @@
 import {
+  amazonSpeakers,
   bookshelf,
+  camera,
   chair,
   cpuCooler,
+  curology,
+  dogFood,
+  footballShoes,
   gameConsole,
+  gamepad,
+  gucciPerfume,
   handbag,
   keyboard,
   laptop,
   monitor,
+  playStation5,
+  quiltedJacket,
   redJacket,
+  toyCar,
+  womanWearingHat,
 } from "@/assets/images";
 import { StaticImageData } from "next/image";
 
@@ -136,5 +147,93 @@ export const bestSellingProducts: Product[] = [
     originalPrice: 270,
     rating: 5,
     reviews: 96,
+  },
+];
+
+export const exploreOurProducts = [
+  {
+    image: dogFood,
+    name: "Dry dog food",
+    originalPrice: 100,
+    rating: 3,
+    reviews: 35,
+  },
+  {
+    image: camera,
+    name: "Canon DSLR camera",
+    originalPrice: 360,
+    rating: 4,
+    reviews: 95,
+  },
+  {
+    image: laptop,
+    name: "Asus Gaming laptop",
+    originalPrice: 700,
+    rating: 5,
+    reviews: 325,
+  },
+  {
+    image: curology,
+    name: "Curology product set",
+    originalPrice: 500,
+    rating: 4,
+    reviews: 145,
+  },
+  {
+    image: toyCar,
+    name: "Remote Control Car",
+    originalPrice: 960,
+    rating: 5,
+    reviews: 65,
+  },
+  {
+    image: footballShoes,
+    name: "Soccer Cleats",
+    originalPrice: 99,
+    rating: 4.7,
+    reviews: 35,
+  },
+  {
+    image: gamepad,
+    name: "USB Gamepad",
+    originalPrice: 660,
+    rating: 4.7,
+    reviews: 55,
+  },
+  {
+    image: quiltedJacket,
+    name: "Quilted Jacket",
+    originalPrice: 253,
+    rating: 4.9,
+    reviews: 59,
+  },
+];
+
+export const newArrival = [
+  {
+    id: 1,
+    title: "PlayStation 5",
+    description: "Black and White version of the PS5 coming out on sale.",
+    image: playStation5,
+  },
+  {
+    id: 2,
+    title: "Woman's collection",
+    description: "Featured woman collections that give you another vibe.",
+    image: womanWearingHat,
+  },
+  {
+    id: 3,
+    title: "Speakers",
+    description: "Amazon wireless speakers",
+    image: amazonSpeakers,
+    gradient: true,
+  },
+  {
+    id: 4,
+    title: "Perfume",
+    description: "GUCCI INTENSE OUD EDP",
+    image: gucciPerfume,
+    gradient: true,
   },
 ];

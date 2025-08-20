@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import TopBanner from "@/components/common/TopBanner";
 import Navbar from "@/components/common/Navbar";
 import { TimerProvider } from "@/context/TimerContext";
+import Footer from "@/components/common/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
             <TopBanner />
             <Navbar />
             <main className="h-full">{children}</main>
+            <Footer />
           </TimerProvider>
         </AuthProvider>
       </body>
