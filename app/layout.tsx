@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AuthProvider } from "./context/AuthContext";
 import { Poppins } from "next/font/google";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,6 +7,7 @@ import TopBanner from "@/components/common/TopBanner";
 import Navbar from "@/components/common/Navbar";
 import { TimerProvider } from "@/context/TimerContext";
 import Footer from "@/components/common/Footer";
+import ScrollToTop from "@/components/common/ScrollToTop";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -33,14 +33,13 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <AuthProvider>
-          <TimerProvider>
-            <TopBanner />
-            <Navbar />
-            <main className="h-full">{children}</main>
-            <Footer />
-          </TimerProvider>
-        </AuthProvider>
+        <TimerProvider>
+          <TopBanner />
+          <Navbar />
+          <main className="h-full">{children}</main>
+          <Footer />
+          <ScrollToTop />
+        </TimerProvider>
       </body>
     </html>
   );

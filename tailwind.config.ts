@@ -176,6 +176,13 @@ const config: Config = {
           "@screen lg": { paddingLeft: "4rem" },
           "@screen xl": { paddingLeft: "135px" },
         },
+        ".section-pr": {
+          paddingLeft: "1rem",
+          "@screen sm": { paddingRight: "2rem" },
+          "@screen md": { paddingRight: "3rem" },
+          "@screen lg": { paddingRight: "4rem" },
+          "@screen xl": { paddingRight: "135px" },
+        },
       });
     },
   ],

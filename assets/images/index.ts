@@ -25,6 +25,7 @@ import womanWearingHat from "./woman-wearing-hat.png";
 import appQRCode from "./app-qr-code.png";
 import googlePlay from "./GooglePlay.png";
 import appStore from "./AppStore.png";
+import logoGoogle from "./logo-google.png";
 
 export {
   sideImage,
@@ -54,4 +55,5 @@ export {
   appQRCode,
   googlePlay,
   appStore,
+  logoGoogle,
 };

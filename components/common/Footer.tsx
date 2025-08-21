@@ -23,7 +23,7 @@ const Footer = () => {
       >
         <div className="flex flex-col gap-6">
           <Link href={"/"}>
-            <h1 className="text-2xl font-bold">Exlusive</h1>
+            <h1 className="text-2xl font-bold">Exclusive</h1>
           </Link>
 
           <h2 className="text-xl font-medium ">Subscribe</h2>
