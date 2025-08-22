@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
+import Account from "./Account";
 
 interface Props {
   navLinks: {
@@ -26,12 +27,13 @@ const NavbarSmall = ({ navLinks }: Props) => {
 
   return (
     <>
-      <nav className="w-full bg-white backdrop-blur-md px-[16px] py-2 text-foundation-gray-g-200 flex items-center justify-between border-b border-gray-100 shadow-sm">
+      <nav className="w-full bg-white px-[16px] py-2 text-foundation-gray-g-200 flex items-center justify-between border-b border-gray-100 shadow-sm">
         <Link href="/" className="flex items-center">
           <span className="font-bold text-base text-black">Exclusive</span>
         </Link>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <Account />
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-foundation-gray-g-700 hover:text-foundation-blue-700 transition-colors duration-300 p-2 rounded-full hover:bg-gray-100"
@@ -43,16 +45,16 @@ const NavbarSmall = ({ navLinks }: Props) => {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      {isOpen && (
+      {/* {isOpen && (
         <div
           className={`absolute w-screen h-screen z-40 left-0 top-0 bg-black/50 backdrop-blur-md`}
           onClick={() => setIsOpen(false)}
         ></div>
-      )}
+      )} */}
 
       {/* Mobile Menu Panel */}
       <div
-        className={`fixed right-0 top-0 bottom-0 bg-white z-50 w-full max-[700px]:w-3/4 max-[500px]:w-full overflow-hidden transform transition-transform duration-300 ease-in-out shadow-2xl
+        className={`fixed right-0 top-0 bottom-0 bg-white z-[100] w-full max-[700px]:w-3/4 max-[500px]:w-full overflow-hidden transform transition-transform duration-300 ease-in-out shadow-2xl
     ${isOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         {/* Close button at the top */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { logoGoogle, sideImage } from "@/assets/images";
+import { sideImage } from "@/assets/images";
 import CustomInput from "@/components/common/CustomInput";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
@@ -36,11 +36,11 @@ const inputfieldDetails = [
   },
 ];
 
-const page = () => {
+const Login = () => {
   const {
     register,
-    handleSubmit,
-    reset,
+    // handleSubmit,
+    // reset,
     formState: { errors },
   } = useForm({ mode: "all" });
 
@@ -86,7 +86,7 @@ const page = () => {
         </div>
 
         <div className="text-base text-center mt-4 md:gap-6 lg:gap-8">
-          <span className="text-gray-500">Don't have an account?</span>
+          <span className="text-gray-500">{`Don't have an account?`}</span>
           <Link href={"/login"}>
             <span className="font-medium ml-4 text-gray-600 underline underline-offset-4">
               Sign up
@@ -98,4 +98,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Login;

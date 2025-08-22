@@ -8,51 +8,81 @@ import {
   IconUser,
 } from "@/assets/icons";
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Account = () => {
   const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
 
+  const showHideMenu = () => setIsMenuVisible(!isMenuVisible);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsMenuVisible(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="relative">
-      <button className="hover:bg-foundation-red-500 active:bg-foundation-red-600 rounded-full p-2 group">
-        <IconUser className="text-black group-hover:text-white" />
-      </button>
-
+    <>
+      {/* overlay */}
       <div
+        onClick={() => setIsMenuVisible(false)}
         className={cn(
-          " absolute bottom-0 translate-y-full right-0 p-4 flex flex-col gap-y-3 w-fit rounded-lg backdrop-blur-sm bg-white/70",
-          isMenuVisible ? "visible" : "invisible"
+          "fixed inset-0 hidden z-[99999] backdrop-blur-sm bg-white/30",
+          isMenuVisible && "block"
         )}
-      >
-        <div className="flex items-center gap-4">
-          <IconUser className="text-white" />
-          <span className="text-white text-sm text-nowrap">
-            Manage My Account
-          </span>
-        </div>
+      ></div>
 
-        <div className="flex items-center gap-4">
-          <IconMallbag className="text-white" />
-          <span className="text-white text-sm">My Order</span>
-        </div>
+      <div className="relative z-[999999]">
+        {/* Menu Icon button */}
+        <button
+          onClick={showHideMenu}
+          className={cn(
+            "text-black rounded-full p-1 group",
+            isMenuVisible && "bg-foundation-red-500 text-white"
+          )}
+        >
+          <IconUser className="w-7" />
+        </button>
 
-        <div className="flex items-center gap-4">
-          <IconCancel className="text-white" />
-          <span className="text-white text-sm">My Cancellations</span>
-        </div>
+        {/* Menu */}
+        <div
+          className={cn(
+            "absolute bottom-0 translate-y-full right-0 p-4 w-fit flex flex-col gap-y-3 rounded-lg backdrop-blur-md backdrop-saturate-150 bg-black/40 transition-opacity duration-200 z-[999999]",
+            isMenuVisible ? "visible opacity-100" : "invisible opacity-0"
+          )}
+        >
+          <div className="flex items-center gap-4 cursor-pointer">
+            <IconUser className="text-white w-7" />
+            <span className="text-white text-sm text-nowrap">
+              Manage My Account
+            </span>
+          </div>
 
-        <div className="flex items-center gap-4">
-          <IconReviews className="text-white" />
-          <span className="text-white text-sm">My Reviews</span>
-        </div>
+          <div className="flex items-center gap-4 cursor-pointer">
+            <IconMallbag className="text-white" />
+            <span className="text-white text-sm">My Order</span>
+          </div>
 
-        <div className="flex items-center gap-4">
-          <IconLogout className="text-white" />
-          <span className="text-white text-sm"> Logout</span>
+          <div className="flex items-center gap-4 cursor-pointer">
+            <IconCancel className="text-white" />
+            <span className="text-white text-sm">My Cancellations</span>
+          </div>
+
+          <div className="flex items-center gap-4 cursor-pointer">
+            <IconReviews className="text-white" />
+            <span className="text-white text-sm">My Reviews</span>
+          </div>
+
+          <div className="flex items-center gap-4 cursor-pointer">
+            <IconLogout className="text-white" />
+            <span className="text-white text-sm"> Logout</span>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

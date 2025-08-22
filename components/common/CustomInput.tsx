@@ -1,5 +1,5 @@
 import React from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
 
 import { Obj } from "@/modules/types";
@@ -15,7 +15,7 @@ interface Props
   validation?: Obj;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
-  errors: any;
+  errors: FieldErrors<FieldValues>;
 }
 
 const CustomInput = ({
@@ -69,7 +69,7 @@ const CustomInput = ({
         <div
           className={
             twMerge(
-              "border-solid border-b border-b-gray-400 text-base px-4  py-1 bg-white text-foundation-gray-400 items-center flex gap-2  "
+              "border-solid border-b border-b-gray-400 text-base py-1 bg-white text-foundation-gray-400 items-center flex gap-2  "
             ) + className
           }
         >
@@ -87,7 +87,9 @@ const CustomInput = ({
       )}
       <div>
         {errors && errors[name] && (
-          <p className="ml-2 text-xs text-red-500">{errors[name]?.message}</p>
+          <p className="ml-2 text-xs text-red-500">
+            {errors[name]?.message as string}
+          </p>
         )}
       </div>
     </div>

@@ -90,7 +90,7 @@ const Carousel = () => {
 
   return (
     <div className="p-0 min-[1250px]:pl-11 min-[1250px]:pt-10 h-full overflow-hidden">
-      <Slider {...settings} className="h-full bg-black">
+      <Slider {...settings} className="h-full bg-black z-10">
         {slideData.map((item, index) => (
           <Slide slide={item} key={index} />
         ))}

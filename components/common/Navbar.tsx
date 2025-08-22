@@ -24,10 +24,10 @@ const navLinks = [
 const Navbar = () => {
   return (
     <>
-      <div className="hidden min-[1250px]:block z-[99999] shadow-sm">
+      <div className="hidden min-[1250px]:block shadow-sm">
         <NavbarBig navLinks={navLinks} />
       </div>
-      <div className="block min-[1250px]:hidden z-[99999] shadow-sm">
+      <div className="block min-[1250px]:hidden z-[9999] shadow-sm sticky top-0">
         <NavbarSmall navLinks={navLinks} />
       </div>
     </>

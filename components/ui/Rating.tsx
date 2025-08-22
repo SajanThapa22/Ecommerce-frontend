@@ -1,4 +1,3 @@
-import { IconStar } from "@/assets/icons";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
@@ -9,7 +8,6 @@ interface Props {
 
 const Rating = ({ rating }: Props) => {
   const moreThanHalf = rating - Math.floor(rating) >= 0.5;
-  // 4.7 - 4 = 0.7
 
   return (
     <div className="flex">

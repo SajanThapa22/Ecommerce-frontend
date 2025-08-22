@@ -17,7 +17,7 @@ const inputfieldDetails = [
     validation: {
       required: {
         value: true,
-        message: "Opps! Enter your first name ",
+        message: "Opps! Enter your full name ",
       },
     },
   },
@@ -30,6 +30,10 @@ const inputfieldDetails = [
     validation: {
       pattern: {
         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        message: "Opps! Enter a valid email",
+      },
+      required: {
+        value: true,
         message: "Opps! Enter your email",
       },
     },
@@ -49,11 +53,11 @@ const inputfieldDetails = [
   },
 ];
 
-const page = () => {
+const SignUp = () => {
   const {
     register,
-    handleSubmit,
-    reset,
+    // handleSubmit,
+    // reset,
     formState: { errors },
   } = useForm({ mode: "all" });
 
@@ -108,8 +112,8 @@ const page = () => {
         <div className="text-base text-center mt-4 md:gap-6 lg:gap-8">
           <span className="text-gray-500">Already have account?</span>
           <Link href={"/login"}>
-            <span className="font-medium ml-4 text-gray-600 underline underline-offset-4">
-              Sign up
+            <span className="font-medium ml-4 text-gray-600 underline underline-offset-8">
+              Login
             </span>
           </Link>
         </div>
@@ -118,4 +122,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default SignUp;

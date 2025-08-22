@@ -1,7 +1,9 @@
 "use client";
 
-import { IconCart, IconHeart, IconSearch, IconUser } from "@/assets/icons";
+import { IconCart, IconHeart, IconSearch } from "@/assets/icons";
 import Link from "next/link";
+import Account from "./Account";
+import { cn } from "@/lib/utils";
 // import { usePathname } from "next/navigation";
 
 interface Props {
@@ -42,10 +44,22 @@ const NavbarBig = ({ navLinks }: Props) => {
           </button>
         </form>
 
-        <div className="gap-4 flex items-center">
-          <IconHeart className="text-[28px] text-black cursor-pointer" />
-          <IconCart className="text-[28px] text-black cursor-pointer" />
-          <IconUser className="text-[28px] text-black cursor-pointer" />
+        <div className="gap-3 flex items-center">
+          <Link href={"/wishlist"}>
+            <button
+              className={cn("z-[999999] text-black rounded-full p-1 group")}
+            >
+              <IconHeart className="w-7" />
+            </button>
+          </Link>
+          <Link href={"/cart"}>
+            <button
+              className={cn("z-[999999] text-black rounded-full p-1 group")}
+            >
+              <IconCart className="w-7" />
+            </button>
+          </Link>
+          <Account />
         </div>
       </div>
     </section>
