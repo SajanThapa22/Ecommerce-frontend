@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 import { FiMinus } from "react-icons/fi";
 import { IoAdd } from "react-icons/io5";
 import Image, { StaticImageData } from "next/image";
-import { useState } from "react";
+import { useState, useRef, MouseEvent } from "react";
 
 interface ProductColor {
   hex: string;
@@ -67,6 +67,9 @@ const page = () => {
       : product.colors[0].images[0]
   );
   const [quantity, setQuantity] = useState(1);
+  const [isZooming, setIsZooming] = useState(false);
+  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
+  const imageRef = useRef<HTMLDivElement>(null);
 
   const increaseQuantity = () => {
     quantity < 10 && setQuantity((prev) => prev + 1);
@@ -75,12 +78,29 @@ const page = () => {
     quantity > 1 && setQuantity((prev) => prev - 1);
   };
 
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!imageRef.current) return;
+
+    const rect = imageRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    setZoomPosition({ x, y });
+  };
+
+  const handleMouseEnter = () => {
+    setIsZooming(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsZooming(false);
+  };
+
   return (
     <div className="my-10 mx-10 grid grid-cols-[5fr_3fr] items-stretch gap-[70px]">
       {/* Left section - Images */}
-      <div className="grid grid-cols-[1fr_5fr] gap-[30px] h-full">
+      <div className="grid grid-cols-[1fr_5fr] gap-[30px] h-full relative">
         {/* Thumbnails */}
-
         <div className="h-full w-full max-h-full overflow-y-auto flex flex-col gap-4">
           {product.colors?.map((item) =>
             item.images.map((_, index) => (
@@ -103,12 +123,33 @@ const page = () => {
         </div>
 
         {/* Preview Image */}
-        <div className="px-10 overflow-hidden relative rounded-lg bg-gray-100 flex items-center justify-center">
-          <Image
-            alt="product"
-            className="object-contain w-full h-full cursor-zoom-in"
-            src={image}
-          />
+        <div className="relative h-full">
+          <div
+            ref={imageRef}
+            className="px-10 h-full overflow-hidden relative rounded-lg bg-gray-100 flex items-center justify-center cursor-zoom-in"
+            onMouseMove={handleMouseMove}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Image
+              alt="product"
+              className="object-contain w-full h-full"
+              src={image}
+            />
+          </div>
+
+          {/* Zoom Window */}
+          {isZooming && (
+            <div
+              className="absolute top-0 -right-[420px] w-96 h-96 border border-gray-300 rounded-lg overflow-hidden bg-white shadow-lg z-10"
+              style={{
+                backgroundImage: `url(${image.src})`,
+                backgroundSize: "200%",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
+              }}
+            />
+          )}
         </div>
       </div>
 
