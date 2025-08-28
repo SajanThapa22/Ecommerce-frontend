@@ -53,11 +53,23 @@ const NavbarBig = ({ navLinks }: Props) => {
             </button>
           </Link>
           <Link href={"/cart"}>
-            <button
-              className={cn("z-[999999] text-black rounded-full p-1 group")}
-            >
-              <IconCart className="w-7" />
-            </button>
+            <div className={cn("relative")}>
+              <button
+                className={cn("z-[999999] text-black rounded-full p-1 group")}
+              >
+                <IconCart className="w-7" />
+              </button>
+
+              {3 > 2 && (
+                <div
+                  className={cn(
+                    "size-4 text-[10px] aspect-square rounded-full bg-foundation-red-500 text-white text-center absolute top-0 right-0"
+                  )}
+                >
+                  {2}
+                </div>
+              )}
+            </div>
           </Link>
           <Account />
         </div>

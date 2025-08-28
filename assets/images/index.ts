@@ -26,6 +26,11 @@ import appQRCode from "./app-qr-code.png";
 import googlePlay from "./GooglePlay.png";
 import appStore from "./AppStore.png";
 import logoGoogle from "./logo-google.png";
+import psController from "./ps-controller.png";
+import psController1 from "./ps-controller-1.png";
+import psController2 from "./ps-controller-2.png";
+import psController3 from "./ps-controller-3.png";
+import psController4 from "./ps-controller-4.png";
 
 export {
   sideImage,
@@ -56,4 +61,9 @@ export {
   googlePlay,
   appStore,
   logoGoogle,
+  psController,
+  psController1,
+  psController2,
+  psController3,
+  psController4,
 };
