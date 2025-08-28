@@ -36,7 +36,9 @@ const Footer = () => {
                 type="text"
                 className="placeholder-foundation-gray-300 bg-transparent text-white w-full focus:outline-none"
               />
-              <IconSend className="text-white" />
+              <button>
+                <IconSend className="text-white" />
+              </button>
             </div>
           </div>
         </div>

@@ -31,7 +31,7 @@ const ServiceCard = ({
             "group-hover:bg-white group-hover:text-black group-hover:border-opacity-30"
         )}
       >
-        <Icon />
+        <Icon className="w-10" />
       </div>
 
       <div

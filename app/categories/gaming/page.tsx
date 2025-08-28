@@ -101,13 +101,13 @@ const page = () => {
       {/* Left section - Images */}
       <div className="grid grid-cols-[1fr_5fr] gap-[30px] h-full relative">
         {/* Thumbnails */}
-        <div className="h-full w-full max-h-full overflow-y-auto flex flex-col gap-4">
+        <div className="h-full w-full max-h-full overflow-y-auto grid grid-rows-5 gap-4">
           {product.colors?.map((item) =>
             item.images.map((_, index) => (
               <div
                 key={index}
                 className={cn(
-                  "p-3 flex-1 overflow-hidden relative w-full bg-gray-100 rounded-lg cursor-pointer ",
+                  "p-3 overflow-hidden relative w-full bg-gray-100 rounded-lg cursor-pointer ",
                   image === _ && "border border-gray-300"
                 )}
                 onClick={() => setImage(_)}
