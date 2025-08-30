@@ -116,7 +116,7 @@ const page = () => {
 
           {/* Proceed to Checkout */}
           <div className="mx-auto w-fit">
-            <Button text="Proceed to Checkout" />
+            <Button text="Proceed to Checkout" pathname="/cart/checkout" />
           </div>
         </div>
       </div>

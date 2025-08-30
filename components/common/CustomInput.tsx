@@ -37,8 +37,9 @@ const CustomInput = ({
     <div className={twMerge("flex w-full  flex-col gap-y-[6px] h-fit ")}>
       {label && (
         <label
-          className={twMerge(
-            "font-normal text-base text-foundation-gray-g-500 " + labelClassName
+          className={cn(
+            "font-normal text-base text-foundation-gray-g-500 select-none",
+            labelClassName
           )}
         >
           {label}
@@ -49,18 +50,17 @@ const CustomInput = ({
       )}
       {type === "textarea" ? (
         <div
-          className={
-            twMerge(
-              "rounded-lg border border-foundation-gray-g-50 text-base px-4  py-1  text-foundation-gray-g-800 items-center flex gap-2 bg-white "
-            ) + className
-          }
+          className={cn(
+            "rounded-lg border border-foundation-gray-g-50 text-base px-4  py-1  text-foundation-gray-g-800 items-center flex gap-2 bg-white ",
+            className
+          )}
         >
           <textarea
             placeholder={label}
             rows={5}
-            className={twMerge(
-              " placeholder:text-base w-full  placeholder:text-foundation-gray-g-600 outline-none  " +
-                inputClassName
+            className={cn(
+              " placeholder:text-base w-full  placeholder:text-foundation-gray-g-600 outline-none  ",
+              inputClassName
             )}
             {...register(name, validation)}
             {...props}

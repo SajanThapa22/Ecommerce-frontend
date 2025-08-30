@@ -1,9 +1,12 @@
 "use client";
 
+import { monitor, gameConsole } from "@/assets/images";
+import QuantityChanger from "@/components/cart/QuantityChanger";
 import CustomInput from "@/components/common/CustomInput";
 import Breadcrumbs from "@/components/ui/BreadCrumb";
 import { cn } from "@/lib/utils";
-import React from "react";
+import Image, { StaticImageData } from "next/image";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const inputfieldDetails = [
@@ -98,6 +101,20 @@ const inputfieldDetails = [
   },
 ];
 
+interface CartItem {
+  id: number;
+  name: string;
+  price: number;
+  image: StaticImageData;
+  quantity: number;
+}
+
+const initialItems: CartItem[] = [
+  { id: 1, name: "Monitor", price: 999, image: monitor, quantity: 1 },
+  { id: 2, name: "Game console", price: 499, image: gameConsole, quantity: 2 },
+  //   { id: 3, name: "Amazon Echo", price: 129, image: "/images/echo.jpg" },
+];
+
 const page = () => {
   const {
     register,
@@ -105,6 +122,9 @@ const page = () => {
     // reset,
     formState: { errors },
   } = useForm({ mode: "all" });
+
+  const [items] = useState<CartItem[]>(initialItems);
+
   return (
     <section className="section-margin-x section-mt section-pt">
       <Breadcrumbs />
@@ -113,7 +133,8 @@ const page = () => {
         <h1 className="text-4xl font-medium text-black">Billing Details</h1>
       </div>
 
-      <div className="grid grid-cols-2 justify-between gap-5 xl:gap-10">
+      <div className="grid grid-cols-2 justify-between gap-8 lg:gap-14 xl:gap-20">
+        {/* Billing Details Form */}
         <form action="" className="flex flex-col gap-4 lg:gap-8">
           {inputfieldDetails.map((item, index) => (
             <CustomInput
@@ -141,6 +162,49 @@ const page = () => {
             </label>
           </div>
         </form>
+
+        {/* Place Order */}
+        <div className="flex flex-col gap-4 lg:gap-8">
+          {/* Items List */}
+          <div className="flex flex-col gap-4 lg:gap-8">
+            {items.map((item, index) => (
+              <div
+                key={index}
+                className="w-full items-center grid grid-cols-2 gap-3 min-w-[500px]"
+              >
+                {/* Product */}
+                <div className="flex items-center gap-[22px]">
+                  <div className="relative w-[50px]">
+                    <Image
+                      className="w-full object-contain"
+                      src={item.image}
+                      alt={item.name}
+                    />
+                  </div>
+                  <span className="text-base text-black">{item.name}</span>
+                </div>
+
+                {/* price */}
+                <span className="text-base text-black ml-auto">{`$${item.price}`}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col divide-y divide-gray-400">
+            <div className="flex justify-between text-base text-black py-3">
+              <span>Subtotal</span>
+              <span>$1150</span>
+            </div>
+            <div className="flex justify-between text-base text-black py-3">
+              <span>Shipping</span>
+              <span>Free</span>
+            </div>
+            <div className="flex justify-between text-base text-black py-3">
+              <span>Total</span>
+              <span>$1150</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
