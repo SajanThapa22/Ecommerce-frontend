@@ -26,61 +26,60 @@ const page = () => {
   const [selected, setSelected] = useState<number[]>([]);
 
   return (
-    <div className="section-margin-x mt-[90px]">
+    <div className="section-margin-x mt-[30px] md:mt-[45px] lg:mt-14 xl:mt-20">
       <Breadcrumbs />
 
-      <div className="mt-14 flex flex-col gap-10">
-        <div className="w-full grid grid-cols-[2fr_2fr_2fr_1fr] min-w-[500px]">
-          <span className="text-base text-black">Product</span>
-          <span className="text-base text-black">Price</span>
-          <span className="text-base text-black">Quantity</span>
-          <span className="text-base text-black">Subtotal</span>
-        </div>
-
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className="w-full items-center grid grid-cols-[2fr_2fr_2fr_1fr] min-w-[500px]"
-          >
-            {/* Product */}
-            <div className="flex items-center gap-[22px]">
-              <div className="relative w-[50px]">
-                <Image
-                  className="w-full object-contain"
-                  src={item.image}
-                  alt={item.name}
-                />
-              </div>
-              <span className="text-base text-black">{item.name}</span>
-            </div>
-
-            {/* price */}
-            <span className="text-base text-black">{`$${item.price}`}</span>
-
-            {/* Quantity */}
-            <QuantityChanger
-              quantity={item.quantity}
-              onPressUp={() => item.quantity--}
-              onPressDown={() => item.quantity++}
-            />
-
-            {/* Subtotal */}
-            <span className="text-base text-black">{`$${item.price}`}</span>
+      <div className="w-full overflow-y-scroll hide-scrollbar">
+        <div className="mt-14 flex flex-col gap-10">
+          <div className="w-full grid grid-cols-[2fr_2fr_2fr_1fr] min-w-[500px]">
+            <span className="text-base text-black">Product</span>
+            <span className="text-base text-black">Price</span>
+            <span className="text-base text-black">Quantity</span>
+            <span className="text-base text-black">Subtotal</span>
           </div>
-        ))}
+
+          {items.map((item, index) => (
+            <div
+              key={index}
+              className="w-full items-center grid grid-cols-[2fr_2fr_2fr_1fr] min-w-[500px]"
+            >
+              {/* Product */}
+              <div className="flex items-center gap-[22px]">
+                <div className="relative w-[50px]">
+                  <Image
+                    className="w-full object-contain"
+                    src={item.image}
+                    alt={item.name}
+                  />
+                </div>
+                <span className="text-base text-black">{item.name}</span>
+              </div>
+
+              {/* price */}
+              <span className="text-base text-black">{`$${item.price}`}</span>
+
+              {/* Quantity */}
+              <QuantityChanger
+                quantity={item.quantity}
+                onPressUp={() => item.quantity--}
+                onPressDown={() => item.quantity++}
+              />
+
+              {/* Subtotal */}
+              <span className="text-base text-black">{`$${item.price}`}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="w-full flex items-center justify-between gap-5 mt-6">
-        <button className="rounded-md text-black px-12 py-3 bg-white border border-gray-400">
-          Return to Shop
-        </button>
-        <button className="rounded-md text-black px-12 py-3 bg-white border border-gray-400">
-          Update Cart
-        </button>
+      {/* Return to shop and update button */}
+      <div className="w-full flex items-center flex-wrap justify-between gap-5 mt-6">
+        <Button variant="transparent" text="Return to Shop" />
+        <Button variant="transparent" text="Update Cart" />
       </div>
 
-      <div className="w-full grid grid-cols-2 gap-[170px] items-start mt-20 text-nowrap">
-        {/*Coupon and Update Button */}
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-[70px] lg:gap-[100px] xl:gap-[170px] items-start mt-10 md:mt-12 lg:mt-16 xl:mt-20 text-nowrap">
+        {/*Coupon input and apply button */}
         <div className="w-full flex gap-4">
           <div className="rounded-md border p-2 border-gray-400">
             <input
@@ -90,9 +89,7 @@ const page = () => {
             />
           </div>
 
-          <button className="rounded-md text-white px-12 py-4 bg-foundation-red-500">
-            Apply Coupon
-          </button>
+          <Button text="Apply Coupon" />
         </div>
 
         {/* Cart checkout */}

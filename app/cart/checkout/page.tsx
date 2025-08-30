@@ -139,7 +139,7 @@ const page = () => {
         <h1 className="text-4xl font-medium text-black">Billing Details</h1>
       </div>
 
-      <div className="grid grid-cols-2 justify-between gap-8 lg:gap-14 xl:gap-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-between gap-8 lg:gap-14 xl:gap-20">
         {/* Billing Details Form */}
         <form action="">
           <div className="flex flex-col gap-4 lg:gap-8">
@@ -166,20 +166,23 @@ const page = () => {
               type="checkbox"
               className="accent-foundation-red-500 size-5"
             />
-            <label htmlFor="check" className="text-black ml-3 text-base">
+            <label
+              htmlFor="check"
+              className="text-black ml-3 text-sm md:text-base"
+            >
               Save this information for faster check-out next time
             </label>
           </div>
         </form>
 
         {/* Place Order */}
-        <div className="flex flex-col gap-4 lg:gap-8">
+        <div className="flex flex-col gap-4 lg:gap-8 mt-8">
           {/* Items List */}
           <div className="flex flex-col gap-4 lg:gap-8">
             {items.map((item, index) => (
               <div
                 key={index}
-                className="w-full items-center grid grid-cols-2 gap-3 min-w-[500px]"
+                className="w-full items-center justify-between flex gap-3"
               >
                 {/* Product */}
                 <div className="flex items-center gap-[22px]">
@@ -273,20 +276,15 @@ const page = () => {
             <div className="rounded-md border p-2 border-gray-400">
               <input
                 type="text"
-                className="w-full py-2 px-4 text-black placeholder:text-gray-400 focus:outline-none"
+                className="w-full text-sm text-black placeholder:text-gray-400 h-full focus:outline-none"
                 placeholder="Coupon Code"
               />
             </div>
 
-            <button className="rounded-md text-white flex-1 p-4 bg-foundation-red-500">
-              Apply Coupon
-            </button>
+            <Button text="Apply coupon" />
           </div>
 
           <div>
-            {/* <button className="rounded-md text-white flex-1 py-4 px-4 md:px-6 lg:px-8 xl:px-10 bg-foundation-red-500">
-              Place Order
-            </button> */}
             <Button text="Place Order" />
           </div>
         </div>

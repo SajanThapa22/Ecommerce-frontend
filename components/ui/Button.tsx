@@ -12,12 +12,13 @@ interface Props extends VariantProps<typeof buttonVariants> {
 }
 
 const buttonVariants = cva(
-  "px-6 py-2 sm:px-8 sm:py-3 md:px-10 md:py-3 lg:px-12 lg:py-4 text-base font-medium text-white rounded-md text-nowrap w-fit",
+  "px-4 py-2 sm:px-6 sm:py-3 md:px-10 md:py-3 lg:px-12 lg:py-4 text-sm md:text-base font-medium text-white rounded-md text-nowrap w-fit",
   {
     variants: {
       variant: {
         primary: "bg-foundation-red-500 hover:bg-foundation-red-600",
         secondary: "bg-foundation-green-500 hover:bg-green-500",
+        transparent: "bg-transparent border border-gray-400 text-black",
       },
     },
     defaultVariants: {

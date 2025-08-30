@@ -162,7 +162,7 @@ const page = () => {
         <div className="flex items-center gap-4">
           <Rating rating={product.rating} />
           <span className="text-gray-400">{`(${product.reviews} reviews)`}</span>
-          <div className="w-[1px] h-full bg-gray-400"></div>
+          <div className="w-[2px] h-[20px] bg-gray-400"></div>
           <span
             className={cn(
               "text-sm",
@@ -170,7 +170,9 @@ const page = () => {
                 ? "text-foundation-green-500"
                 : "text-foundation-red-500"
             )}
-          ></span>
+          >
+            {product.inStock ? "In Stock" : "Out of Stock"}
+          </span>
         </div>
 
         <h2 className="text-2xl text-black mt-4 mb-4">
