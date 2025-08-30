@@ -109,12 +109,12 @@ const page = () => {
     <section className="section-margin-x section-mt section-pt">
       <Breadcrumbs />
 
-      <div className="mt-8 md:mt-10 lg:mt-14 xl:mt-20">
-        <h1 className="text-4xl font-medium">Billing Details</h1>
+      <div className="mt-8 md:mt-10 lg:mt-14 xl:mt-20 mb-12">
+        <h1 className="text-4xl font-medium text-black">Billing Details</h1>
       </div>
 
       <div className="grid grid-cols-2 justify-between gap-5 xl:gap-10">
-        <form action="">
+        <form action="" className="flex flex-col gap-4 lg:gap-8">
           {inputfieldDetails.map((item, index) => (
             <CustomInput
               key={index}
@@ -123,10 +123,23 @@ const page = () => {
               name={item.name}
               type={item.type}
               register={register}
-              placeholder={item.label}
-              className={cn("border-b-0 outline-none p-2 bg-gray-400")}
+              label={item.label}
+              className={cn(
+                "border-b-0 outline-none p-2 py-3 bg-foundation-gray-200"
+              )}
+              labelClassName="text-gray-400"
             />
           ))}
+          <div className=" flex items-center">
+            <input
+              id="check"
+              type="checkbox"
+              className="accent-foundation-red-500 size-5"
+            />
+            <label htmlFor="check" className="text-black ml-3 text-base">
+              Save this information for faster check-out next time
+            </label>
+          </div>
         </form>
       </div>
     </section>

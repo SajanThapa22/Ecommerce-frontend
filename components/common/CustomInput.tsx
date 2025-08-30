@@ -3,6 +3,7 @@ import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
 
 import { Obj } from "@/modules/types";
+import { cn } from "@/lib/utils";
 
 interface Props
   extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
@@ -67,17 +68,16 @@ const CustomInput = ({
         </div>
       ) : (
         <div
-          className={
-            twMerge(
-              "border-solid border-b border-b-gray-400 text-base py-1 bg-white text-foundation-gray-400 items-center flex gap-2  "
-            ) + className
-          }
+          className={cn(
+            "border-solid border-b border-b-gray-400 text-base py-1 bg-white text-foundation-gray-400 items-center flex gap-2  ",
+            className
+          )}
         >
           {leftIcon && leftIcon}
           <input
-            className={twMerge(
-              " placeholder:text-base w-full placeholder:text-gray-400 outline-none border-none focus:outline-none" +
-                inputClassName
+            className={cn(
+              "bg-transparent placeholder:text-base w-full placeholder:text-gray-400 outline-none border-none focus:outline-none",
+              inputClassName
             )}
             {...register(name, validation)}
             {...props}
