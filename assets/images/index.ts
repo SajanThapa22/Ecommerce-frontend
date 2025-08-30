@@ -31,6 +31,8 @@ import psController1 from "./ps-controller-1.png";
 import psController2 from "./ps-controller-2.png";
 import psController3 from "./ps-controller-3.png";
 import psController4 from "./ps-controller-4.png";
+import mastercard from "./mastercard.png";
+import visacard from "./visacard.png";
 
 export {
   sideImage,
@@ -66,4 +68,6 @@ export {
   psController2,
   psController3,
   psController4,
+  visacard,
+  mastercard,
 };

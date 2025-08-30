@@ -1,25 +1,26 @@
 "use client";
 
-import { monitor, gameConsole } from "@/assets/images";
+import { monitor, gameConsole, visacard, mastercard } from "@/assets/images";
 import QuantityChanger from "@/components/cart/QuantityChanger";
 import CustomInput from "@/components/common/CustomInput";
 import Breadcrumbs from "@/components/ui/BreadCrumb";
+import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";
-import React, { useState } from "react";
+import React, { ChangeEvent, InputEventHandler, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const inputfieldDetails = [
   {
-    title: "First Name",
-    label: "First Name",
-    name: "firstName",
+    title: "Full Name",
+    label: "Full Name",
+    name: "fullName",
     type: "text",
     className: "",
     validation: {
       required: {
         value: true,
-        message: "Opps! Enter your first name",
+        message: "Opps! Enter your full name",
       },
     },
   },
@@ -124,9 +125,14 @@ const page = () => {
   } = useForm({ mode: "all" });
 
   const [items] = useState<CartItem[]>(initialItems);
+  const [paymentMethod, setPaymentMethod] = useState("bank");
+
+  const handlePaymentChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPaymentMethod(e.target.value);
+  };
 
   return (
-    <section className="section-margin-x section-mt section-pt">
+    <section className="section-margin-x section-mt">
       <Breadcrumbs />
 
       <div className="mt-8 md:mt-10 lg:mt-14 xl:mt-20 mb-12">
@@ -135,23 +141,26 @@ const page = () => {
 
       <div className="grid grid-cols-2 justify-between gap-8 lg:gap-14 xl:gap-20">
         {/* Billing Details Form */}
-        <form action="" className="flex flex-col gap-4 lg:gap-8">
-          {inputfieldDetails.map((item, index) => (
-            <CustomInput
-              key={index}
-              validation={item.validation}
-              errors={errors}
-              name={item.name}
-              type={item.type}
-              register={register}
-              label={item.label}
-              className={cn(
-                "border-b-0 outline-none p-2 py-3 bg-foundation-gray-200"
-              )}
-              labelClassName="text-gray-400"
-            />
-          ))}
-          <div className=" flex items-center">
+        <form action="">
+          <div className="flex flex-col gap-4 lg:gap-8">
+            {inputfieldDetails.map((item, index) => (
+              <CustomInput
+                key={index}
+                validation={item.validation}
+                errors={errors}
+                name={item.name}
+                type={item.type}
+                register={register}
+                label={item.label}
+                className={cn(
+                  "border-b-0 outline-none p-2 py-2 bg-foundation-gray-200"
+                )}
+                labelClassName="text-gray-400"
+              />
+            ))}
+          </div>
+
+          <div className=" flex items-center mt-4">
             <input
               id="check"
               type="checkbox"
@@ -203,6 +212,82 @@ const page = () => {
               <span>Total</span>
               <span>$1150</span>
             </div>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div className=" flex items-center">
+              <input
+                id="bank"
+                type="radio"
+                name="payment-method"
+                value="bank"
+                checked={paymentMethod === "bank"}
+                onChange={handlePaymentChange}
+                className="accent-foundation-red-500 size-5"
+              />
+              <label
+                htmlFor="bank"
+                className="text-black ml-3 text-base select-none"
+              >
+                Bank
+              </label>
+            </div>
+
+            <div className="flex gap-3 items-center">
+              <div className="relative overflow-hidden w-[42px] cursor-pointer">
+                <Image
+                  alt="visa card"
+                  src={visacard}
+                  className="w-full object-contain"
+                />
+              </div>
+              <div className="relative overflow-hidden w-[42px] cursor-pointer">
+                <Image
+                  alt="visa card"
+                  src={mastercard}
+                  className="w-full object-contain"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className=" flex items-center">
+            <input
+              id="cash-on-delivery"
+              type="radio"
+              name="payment-method"
+              value="cash-on-delivery"
+              checked={paymentMethod === "cash-on-delivery"}
+              onChange={handlePaymentChange}
+              className="accent-foundation-red-500 size-5"
+            />
+            <label
+              htmlFor="cash-on-delivery"
+              className="text-black ml-3 text-base select-none"
+            >
+              Cash on delivery
+            </label>
+          </div>
+
+          <div className="w-full flex gap-4">
+            <div className="rounded-md border p-2 border-gray-400">
+              <input
+                type="text"
+                className="w-full py-2 px-4 text-black placeholder:text-gray-400 focus:outline-none"
+                placeholder="Coupon Code"
+              />
+            </div>
+
+            <button className="rounded-md text-white flex-1 p-4 bg-foundation-red-500">
+              Apply Coupon
+            </button>
+          </div>
+
+          <div>
+            {/* <button className="rounded-md text-white flex-1 py-4 px-4 md:px-6 lg:px-8 xl:px-10 bg-foundation-red-500">
+              Place Order
+            </button> */}
+            <Button text="Place Order" />
           </div>
         </div>
       </div>
