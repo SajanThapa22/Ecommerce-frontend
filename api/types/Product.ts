@@ -32,6 +32,39 @@ export interface Product {
   percentOff?: number;
 }
 
+export const wishlistItems: Product[] = [
+  {
+    image: handbag,
+    name: "Gucci duffle bag",
+    originalPrice: 1160,
+    priceAfterDiscount: 960,
+    rating: 4.5,
+    reviews: 54,
+    percentOff: 35,
+  },
+  {
+    image: cpuCooler,
+    name: "RGB liquid CPU Cooler",
+    originalPrice: 170,
+    rating: 5,
+    reviews: 81,
+  },
+  {
+    image: gameConsole,
+    name: "Game Console",
+    originalPrice: 500,
+    rating: 5,
+    reviews: 320,
+  },
+  {
+    image: quiltedJacket,
+    name: "Quilted Jacket",
+    originalPrice: 253,
+    rating: 4.9,
+    reviews: 59,
+  },
+];
+
 export const products: Product[] = [
   {
     image: gameConsole,
