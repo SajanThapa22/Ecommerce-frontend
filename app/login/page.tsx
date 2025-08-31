@@ -54,7 +54,10 @@ const Login = () => {
         />
       </div>
 
-      <form action="" className="section-padding-x max-w-[600px] mx-auto">
+      <form
+        action=""
+        className="w-full section-padding-x max-w-[600px] mx-auto"
+      >
         <div className="text-black">
           <h1 className="text-xl min-[350px]:text-2xl lg:text-3xl xl:text-4xl mb-6 font-medium">
             Create an account
