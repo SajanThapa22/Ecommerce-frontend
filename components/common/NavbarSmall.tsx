@@ -29,7 +29,7 @@ const NavbarSmall = ({ navLinks }: Props) => {
     <>
       <nav className="w-full bg-white px-[16px] py-2 text-foundation-gray-g-200 flex items-center justify-between border-b border-gray-100 shadow-sm">
         <Link href="/" className="flex items-center">
-          <span className="font-bold text-base text-black">Exclusive</span>
+          <span className="font-bold text-base text-black">A2Z shop</span>
         </Link>
 
         <div className="flex items-center gap-2">
@@ -59,7 +59,7 @@ const NavbarSmall = ({ navLinks }: Props) => {
       >
         {/* Close button at the top */}
         <div className="flex justify-between items-center py-2 px-[30px]">
-          <span className="font-bold text-base text-black">Exclusive</span>
+          <span className="font-bold text-base text-black">A2Z Shop</span>
 
           <button
             onClick={() => setIsOpen(false)}

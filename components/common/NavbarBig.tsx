@@ -19,7 +19,7 @@ const NavbarBig = ({ navLinks }: Props) => {
 
   return (
     <section className="section-padding-x pb-4 mt-5 flex justify-between items-center border-b border-b-foundation-gray-300">
-      <span className="font-bold text-black text-2xl">Exclusive</span>
+      <span className="font-bold text-black text-2xl">A2Z Shop</span>
       <nav className="flex gap-12 justify-between items-center">
         {navLinks.map((item, index) => (
           <Link
