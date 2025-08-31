@@ -12,7 +12,7 @@ interface Props extends VariantProps<typeof buttonVariants> {
 }
 
 const buttonVariants = cva(
-  "px-4 py-2 sm:px-6 sm:py-3 md:px-10 md:py-3 lg:px-12 lg:py-4 text-sm md:text-base font-medium text-white rounded-md text-nowrap w-fit",
+  "px-4 py-2 sm:px-6 sm:py-3 md:px-10 md:py-3 lg:px-12 lg:py-4 text-sm md:text-base font-medium text-white rounded-md text-nowrap w-fit text-xs md:text-sm lg:text-base",
   {
     variants: {
       variant: {

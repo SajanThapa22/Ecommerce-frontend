@@ -34,23 +34,25 @@ const WishlistItem = ({ product }: Props) => {
             </button>
           </div>
         </div>
-        <button className="p-2 w-full flex items-center justify-center gap-2 bg-black text-white text-base">
+        <button className="p-2 w-full flex items-center justify-center gap-2 bg-black text-white">
           <IconCart className={cn("text-white size-6")} />
-          <span>Add to Cart</span>
+          <span className="text-xs md:text-sm lg:text-base">Add to Cart</span>
         </button>
       </div>
 
       <div className="mt-4 flex flex-col gap-y-2">
-        <span className="text-sm md:text-base text-black">{product.name}</span>
-        <div className="flex gap-2">
+        <span className="text-xs md:text-sm lg:text-base text-black">
+          {product.name}
+        </span>
+        <div className="flex itemscen gap-2">
           {product.priceAfterDiscount && (
-            <span className="text-sm md:text-base text-foundation-red-500 font-medium">
+            <span className="text-xs md:text-sm lg:text-base text-foundation-red-500 font-medium">
               {`$${product.priceAfterDiscount}`}
             </span>
           )}
           <span
             className={cn(
-              "text-sm md:text-base text-gray-400 font-medium",
+              "text-xs md:text-sm lg:text-base text-gray-400 font-medium",
               product.priceAfterDiscount
                 ? "line-through"
                 : "text-foundation-red-500"
