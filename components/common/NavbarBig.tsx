@@ -4,7 +4,7 @@ import { IconCart, IconHeart, IconSearch } from "@/assets/icons";
 import Link from "next/link";
 import Account from "./Account";
 import { cn } from "@/lib/utils";
-// import { usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 interface Props {
   navLinks: {
@@ -14,22 +14,27 @@ interface Props {
 }
 
 const NavbarBig = ({ navLinks }: Props) => {
-  //   const pathname = usePathname();
-  //   const isActive = (href: string) => href === pathname;
+  const pathname = usePathname();
+  const isActive = (href: string) => href === pathname;
 
   return (
     <section className="section-padding-x pb-4 mt-5 flex justify-between items-center border-b border-b-foundation-gray-300">
       <span className="font-bold text-black text-2xl">A2Z Shop</span>
-      <nav className="flex gap-12 justify-between items-center">
-        {navLinks.map((item, index) => (
-          <Link
-            className="text-base text-black capitalize"
-            href={item.link}
-            key={index}
-          >
-            {item.title}
-          </Link>
-        ))}
+      <nav>
+        <ul className="flex gap-12 justify-between items-center">
+          {navLinks.map((item, index) => (
+            <Link href={item.link} key={index}>
+              <li
+                className={cn(
+                  "capitalize text-black",
+                  isActive(item?.link) ? "border-b-[2px] border-b-gray-400" : ""
+                )}
+              >
+                {item.title}
+              </li>
+            </Link>
+          ))}
+        </ul>
       </nav>
 
       <div className="flex justify-center gap-6 items-center">
