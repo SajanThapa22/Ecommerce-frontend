@@ -3,8 +3,7 @@
 import { Product } from "@/api/types/Product";
 import Image from "next/image";
 import React from "react";
-import Rating from "../ui/Rating";
-import { IconCart, IconDelete, IconHeart, IconView } from "@/assets/icons";
+import { IconCart, IconDelete } from "@/assets/icons";
 import { cn } from "@/lib/utils";
 
 interface Props {

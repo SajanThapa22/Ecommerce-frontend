@@ -90,7 +90,7 @@ const Login = () => {
 
         <div className="text-base text-center mt-4 md:gap-6 lg:gap-8">
           <span className="text-gray-500">{`Don't have an account?`}</span>
-          <Link href={"/login"}>
+          <Link href={"/signup"}>
             <span className="font-medium ml-4 text-gray-600 underline underline-offset-4">
               Sign up
             </span>

@@ -21,9 +21,9 @@ const initialItems: CartItem[] = [
   //   { id: 3, name: "Amazon Echo", price: 129, image: "/images/echo.jpg" },
 ];
 
-const page = () => {
+const Cart = () => {
   const [items] = useState<CartItem[]>(initialItems);
-  const [selected, setSelected] = useState<number[]>([]);
+  // const [selected, setSelected] = useState<number[]>([]);
 
   return (
     <div className="section-margin-x mt-[30px] md:mt-[45px] lg:mt-14 xl:mt-20">
@@ -121,4 +121,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Cart;

@@ -20,7 +20,7 @@ const EnhanceYourExperience = () => {
 
       <div className="flex flex-col h-full gap-2 items-center justify-between">
         <BannerTimer sm={true} className="block min-[800px]:hidden" />
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden select-none">
           <Image
             src={speaker}
             alt="speaker"

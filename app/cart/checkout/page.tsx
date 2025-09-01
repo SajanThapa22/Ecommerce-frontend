@@ -1,13 +1,12 @@
 "use client";
 
 import { monitor, gameConsole, visacard, mastercard } from "@/assets/images";
-import QuantityChanger from "@/components/cart/QuantityChanger";
 import CustomInput from "@/components/common/CustomInput";
 import Breadcrumbs from "@/components/ui/BreadCrumb";
 import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";
-import React, { ChangeEvent, InputEventHandler, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const inputfieldDetails = [
@@ -116,7 +115,7 @@ const initialItems: CartItem[] = [
   //   { id: 3, name: "Amazon Echo", price: 129, image: "/images/echo.jpg" },
 ];
 
-const page = () => {
+const Checkout = () => {
   const {
     register,
     // handleSubmit,
@@ -293,4 +292,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Checkout;

@@ -16,7 +16,7 @@ interface Props {
 
 const Slide = ({ slide }: Props) => {
   return (
-    <div className="grid grid-cols-2 items-center gap-5 justify-between py-4 px-4 min-[500px]:py-6 min-[800px]:py-8 min-[1200px]:py-12 min-[1200px]:px-12 h-[270px] min-[380px]:h-[300px] md:h-[340px]">
+    <div className="grid grid-cols-2 items-center gap-5 justify-between py-4 px-4 min-[500px]:py-6 min-[800px]:py-8 min-[1200px]:py-12 min-[1200px]:px-12 h-[270px] min-[380px]:h-[300px] md:h-[330px]">
       <div className="flex flex-col gap-3 min-[660px]:gap-5">
         <div className="flex items-center gap-3 min-[660px]:gap-6">
           <Image

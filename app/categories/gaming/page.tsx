@@ -60,7 +60,7 @@ const product: Product = {
   inStock: true,
 };
 
-const page = () => {
+const Page = () => {
   const [image, setImage] = useState<StaticImageData>(
     product.images.length !== 0
       ? product.images[0]
@@ -282,4 +282,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
