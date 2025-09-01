@@ -8,6 +8,7 @@ import {
   IconUser,
 } from "@/assets/icons";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 const Account = () => {
@@ -54,12 +55,18 @@ const Account = () => {
             isMenuVisible ? "visible opacity-100" : "invisible opacity-0"
           )}
         >
-          <div className="flex items-center gap-4 cursor-pointer">
-            <IconUser className="text-white w-7" />
-            <span className="text-white text-sm text-nowrap">
-              Manage My Account
-            </span>
-          </div>
+          <Link href={"/account"}>
+            <div
+              onClick={() => setIsMenuVisible(false)}
+              className="flex items-center gap-4 cursor-pointer"
+            >
+              <IconUser className="text-white w-7" />
+
+              <span className="text-white text-sm text-nowrap select-none">
+                Manage My Account
+              </span>
+            </div>
+          </Link>
 
           <div className="flex items-center gap-4 cursor-pointer">
             <IconMallbag className="text-white" />

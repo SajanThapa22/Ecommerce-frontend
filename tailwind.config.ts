@@ -151,7 +151,7 @@ const config: Config = {
             marginTop: "8rem",
           },
           "@screen xl": {
-            marginTop: "100px",
+            marginTop: "80px",
           },
         },
         ".section-pb": {
