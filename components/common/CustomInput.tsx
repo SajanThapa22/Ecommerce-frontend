@@ -38,7 +38,7 @@ const CustomInput = ({
       {label && (
         <label
           className={cn(
-            "font-normal text-base text-foundation-gray-g-500 select-none",
+            "font-normal text-base text-gray-600 select-none",
             labelClassName
           )}
         >
