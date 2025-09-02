@@ -1,6 +1,5 @@
 import React from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import { twMerge } from "tailwind-merge";
 
 import { Obj } from "@/modules/types";
 import { cn } from "@/lib/utils";
@@ -34,7 +33,7 @@ const CustomInput = ({
   ...props
 }: Props) => {
   return (
-    <div className={twMerge("flex w-full  flex-col gap-y-[6px] h-fit ")}>
+    <div className={cn("flex w-full  flex-col gap-y-[6px] h-fit")}>
       {label && (
         <label
           className={cn(
@@ -51,7 +50,7 @@ const CustomInput = ({
       {type === "textarea" ? (
         <div
           className={cn(
-            "rounded-lg border border-foundation-gray-g-50 text-base px-4  py-1  text-foundation-gray-g-800 items-center flex gap-2 bg-white ",
+            "rounded-lg border border-gray-50 text-base px-4  py-1 text-gray-800 items-center flex gap-2 bg-white",
             className
           )}
         >
@@ -59,7 +58,7 @@ const CustomInput = ({
             placeholder={label}
             rows={5}
             className={cn(
-              " placeholder:text-base w-full  placeholder:text-foundation-gray-g-600 outline-none  ",
+              " placeholder:text-base w-full  placeholder:text-gray-400 outline-none",
               inputClassName
             )}
             {...register(name, validation)}
@@ -69,7 +68,7 @@ const CustomInput = ({
       ) : (
         <div
           className={cn(
-            "border-solid border-b border-b-gray-400 text-base py-1 bg-white text-foundation-gray-400 items-center flex gap-2  ",
+            " text-base py-1 bg-white text-foundation-gray-400 items-center flex gap-2  ",
             className
           )}
         >

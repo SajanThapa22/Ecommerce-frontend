@@ -29,6 +29,8 @@ import IconStar from "./star.svg";
 import IconCustomerService from "./icon-customer-service.svg";
 import IconReturn from "./icon-return.svg";
 import IconDelete from "./icon-delete.svg";
+import IconEmail from "./icon-mail.svg";
+import IconPhone from "./icon-phone.svg";
 
 export {
   IconCart,
@@ -62,4 +64,6 @@ export {
   IconStar,
   IconReturn,
   IconDelete,
+  IconEmail,
+  IconPhone,
 };

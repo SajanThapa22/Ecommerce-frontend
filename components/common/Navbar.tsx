@@ -1,6 +1,14 @@
+"use client";
+
 import React from "react";
 import NavbarBig from "./NavbarBig";
 import NavbarSmall from "./NavbarSmall";
+import { RiHome2Line } from "react-icons/ri";
+import { MdOutlineLocalPhone } from "react-icons/md";
+import { BsExclamationCircle } from "react-icons/bs";
+import { FiUser } from "react-icons/fi";
+import { BsCart3 } from "react-icons/bs";
+import { IoMdHeartEmpty } from "react-icons/io";
 
 const navLinks = [
   {
@@ -21,14 +29,47 @@ const navLinks = [
   },
 ];
 
+const smallNavLinks = [
+  {
+    title: "home",
+    link: "/",
+    icon: RiHome2Line,
+  },
+  {
+    title: "contact",
+    link: "/contact",
+    icon: MdOutlineLocalPhone,
+  },
+  {
+    title: "about",
+    link: "/about",
+    icon: BsExclamationCircle,
+  },
+  {
+    title: "sign up",
+    link: "/signup",
+    icon: FiUser,
+  },
+  {
+    title: "cart",
+    link: "/cart",
+    icon: BsCart3,
+  },
+  {
+    title: "wishlist",
+    link: "/wishlist",
+    icon: IoMdHeartEmpty,
+  },
+];
+
 const Navbar = () => {
   return (
     <>
       <div className="hidden min-[1250px]:block shadow-sm">
         <NavbarBig navLinks={navLinks} />
       </div>
-      <div className="block min-[1250px]:hidden z-[9999] shadow-sm sticky top-0">
-        <NavbarSmall navLinks={navLinks} />
+      <div className="block min-[1250px]:hidden shadow-sm">
+        <NavbarSmall navLinks={smallNavLinks} />
       </div>
     </>
   );

@@ -167,7 +167,7 @@ const Checkout = () => {
             />
             <label
               htmlFor="check"
-              className="text-black ml-3 text-sm md:text-base"
+              className="text-black ml-3 text-sm md:text-base select-none"
             >
               Save this information for faster check-out next time
             </label>

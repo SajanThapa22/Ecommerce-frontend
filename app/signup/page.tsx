@@ -11,7 +11,7 @@ const inputfieldDetails = [
   {
     title: "Full name ",
     name: "full_name",
-    placeholder: "Your full name",
+    placeholder: "Your Full Name",
     type: "text",
     className: "",
     validation: {
@@ -89,6 +89,7 @@ const SignUp = () => {
               type={item.type}
               placeholder={item.placeholder}
               register={register}
+              className="border-b border-b-gray-400"
             />
           ))}
         </div>

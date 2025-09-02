@@ -75,6 +75,7 @@ const Login = () => {
               type={item.type}
               placeholder={item.placeholder}
               register={register}
+              className="border-b border-b-gray-400"
             />
           ))}
         </div>
