@@ -36,7 +36,7 @@ const acheivements = [
 const Achievements = () => {
   return (
     <section className="mt-8 md:mt-[50px] lg:mt-[100px] xl:mt-[140px] section-padding-x">
-      <div className="w-full gap-4 lg:gap-[30px] grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+      <div className="w-full gap-4 lg:gap-[30px] grid grid-cols-1 min-[430px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {acheivements.map((item, index) => (
           <ServiceCard
             key={index}
