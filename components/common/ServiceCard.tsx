@@ -21,17 +21,25 @@ const ServiceCard = ({
     <div
       className={cn(
         "flex flex-col justify-center items-center gap-6 group",
-        className
+        hoverEFfect &&
+          "rounded-lg hover:bg-foundation-red-500 p-6 hover:shadow-sm border border-gray-400"
       )}
     >
       <div
         className={cn(
-          "p-2 aspect-square rounded-full bg-black text-white flex items-center justify-center border-[10px] border-solid border-gray-300",
-          hoverEFfect &&
-            "group-hover:bg-white group-hover:text-black group-hover:border-opacity-30"
+          "rounded-full bg-gray-300 p-[10px]",
+          hoverEFfect && "group-hover:bg-white/30"
         )}
       >
-        <Icon className="w-10" />
+        <div
+          className={cn(
+            "p-2 aspect-square rounded-full bg-black text-white flex items-center justify-center",
+            hoverEFfect &&
+              "group-hover:bg-white group-hover:text-black group-hover:border-white/10"
+          )}
+        >
+          <Icon className="w-10" />
+        </div>
       </div>
 
       <div
