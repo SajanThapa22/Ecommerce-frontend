@@ -1,6 +1,6 @@
 "use client";
 
-import { johnSmith, johnWick } from "@/assets/images";
+import { johnSmith, johnWick, willSmith } from "@/assets/images";
 import React from "react";
 import TeamCard from "./TeamCard";
 
@@ -26,9 +26,9 @@ const team = [
     },
   },
   {
-    name: "John Smith",
-    image: johnSmith,
-    position: "Founder & Chairman",
+    name: "Will Smith",
+    image: willSmith,
+    position: "Product Designer",
     socials: {
       twitter: "https://twitter.com",
       instagram: "https://www.instagram.com",

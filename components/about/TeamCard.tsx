@@ -18,9 +18,9 @@ interface Props {
 const TeamCard = ({ employee }: Props) => {
   return (
     <div className="max-w-[450px]">
-      <div className="relative w-full aspect-[6/7] pt-[33px] px-[38px] bg-foundation-gray-200">
+      <div className="relative w-full aspect-[6/7] pt-[33px] px-[20px] bg-foundation-gray-200">
         <Image
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover"
           src={employee.image}
           alt="employee image"
         />

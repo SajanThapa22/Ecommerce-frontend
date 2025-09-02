@@ -6,7 +6,7 @@ import BestSellingProducts from "@/components/home/BestSellingProducts";
 import EnhanceYourExperience from "@/components/home/EnhanceYourExperience";
 import ExploreOurProducts from "@/components/home/ExploreOurProducts";
 import NewArrival from "@/components/home/NewArrival";
-import Services from "@/components/home/Services";
+import Services from "@/components/common/Services";
 
 function Home() {
   return (

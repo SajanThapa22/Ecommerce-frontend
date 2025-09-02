@@ -36,6 +36,7 @@ import visacard from "./visacard.png";
 import aboutSectionImage from "./about-section-image.jpg";
 import johnSmith from "./john-smith-new.png";
 import johnWick from "./john-wick-newer.png";
+import willSmith from "./will-smith.png";
 
 export {
   aboutSectionImage,
@@ -76,4 +77,5 @@ export {
   mastercard,
   johnSmith,
   johnWick,
+  willSmith,
 };

@@ -2,7 +2,7 @@
 
 import { IconCustomerService, IconDelivery, IconSecure } from "@/assets/icons";
 import React from "react";
-import ServiceCard from "../common/ServiceCard";
+import ServiceCard from "./ServiceCard";
 
 const services = [
   {

@@ -1,6 +1,7 @@
 import Achievements from "@/components/about/Achievements";
 import OurStory from "@/components/about/OurStory";
 import OurTeam from "@/components/about/OurTeam";
+import OurServices from "@/components/about/OurServices";
 import Breadcrumbs from "@/components/ui/BreadCrumb";
 
 const About = () => {
@@ -12,6 +13,7 @@ const About = () => {
       <OurStory />
       <Achievements />
       <OurTeam />
+      <OurServices />
     </main>
   );
 };
