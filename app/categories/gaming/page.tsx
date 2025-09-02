@@ -51,10 +51,6 @@ const product: Product = {
         psController4,
       ],
     },
-    // {
-    //   hex: "#000000",
-    //   images: ["/images/gamepad/black1.png", "/images/gamepad/black2.png"],
-    // },
   ],
   sizes: ["XS", "S", "M", "L", "XL"],
   inStock: true,
@@ -88,34 +84,26 @@ const Page = () => {
     setZoomPosition({ x, y });
   };
 
-  const handleMouseEnter = () => {
-    setIsZooming(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsZooming(false);
-  };
-
   return (
-    <div className="my-10 mx-10 grid grid-cols-[5fr_3fr] items-stretch gap-[70px]">
+    <div className="my-6 mx-4 sm:mx-6 md:mx-10 grid grid-cols-1 lg:grid-cols-[5fr_3fr] items-start gap-10 lg:gap-[70px]">
       {/* Left section - Images */}
-      <div className="grid grid-cols-[1fr_5fr] gap-[30px] h-full relative">
+      <div className="grid grid-cols-1 sm:grid-cols-[1fr_5fr] gap-6 sm:gap-[30px] h-full relative ">
         {/* Thumbnails */}
-        <div className="h-full w-full max-h-full overflow-y-auto grid grid-rows-5 gap-4">
+        <div className="h-full max-h-[400px] sm:max-h-full overflow-y-auto grid sm:grid-rows-5 gap-3 sm:gap-4 order-2 sm:order-1 grid-cols-5 sm:grid-cols-1 grid-rows-1">
           {product.colors?.map((item) =>
-            item.images.map((_, index) => (
+            item.images.map((img, index) => (
               <div
                 key={index}
                 className={cn(
-                  "p-3 overflow-hidden relative w-full bg-gray-100 rounded-lg cursor-pointer ",
-                  image === _ && "border border-gray-300"
+                  "p-2 sm:p-3 overflow-hidden relative bg-gray-100 rounded-lg cursor-pointer",
+                  image === img && "border border-orange-300"
                 )}
-                onClick={() => setImage(_)}
+                onClick={() => setImage(img)}
               >
                 <Image
                   alt="product"
                   className="object-contain w-full h-full"
-                  src={_}
+                  src={img}
                 />
               </div>
             ))
@@ -123,13 +111,13 @@ const Page = () => {
         </div>
 
         {/* Preview Image */}
-        <div className="relative h-full">
+        <div className="relative h-[300px] sm:h-full order-1 sm:order-2">
           <div
             ref={imageRef}
-            className="px-10 h-full overflow-hidden relative rounded-lg bg-gray-100 flex items-center justify-center cursor-zoom-in"
+            className="px-4 sm:px-10 h-full overflow-hidden relative rounded-lg bg-gray-100 flex items-center justify-center cursor-zoom-in"
             onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={() => setIsZooming(true)}
+            onMouseLeave={() => setIsZooming(false)}
           >
             <Image
               alt="product"
@@ -138,10 +126,11 @@ const Page = () => {
             />
           </div>
 
-          {/* Zoom Window */}
+          {/* Zoom Window (hidden on small screens) */}
+
           {isZooming && (
             <div
-              className="absolute top-0 -right-[420px] w-96 h-96 border border-gray-300 rounded-lg overflow-hidden bg-white shadow-lg z-10"
+              className="hidden lg:block absolute top-0 -right-[420px] w-96 h-96 border border-gray-300 rounded-lg overflow-hidden bg-white shadow-lg z-10"
               style={{
                 backgroundImage: `url(${image.src})`,
                 backgroundSize: "200%",
@@ -155,14 +144,14 @@ const Page = () => {
 
       {/* Product details */}
       <div className="h-fit">
-        <h1 className="font-semibold text-2xl text-black mb-4">
+        <h1 className="font-semibold text-xl sm:text-2xl text-black mb-4">
           {product.name}
         </h1>
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4">
           <Rating rating={product.rating} />
-          <span className="text-gray-400">{`(${product.reviews} reviews)`}</span>
-          <div className="w-[2px] h-[20px] bg-gray-400"></div>
+          <span className="text-gray-400 text-sm">{`(${product.reviews} reviews)`}</span>
+          <div className="hidden sm:block w-[2px] h-[20px] bg-gray-400"></div>
           <span
             className={cn(
               "text-sm",
@@ -175,7 +164,7 @@ const Page = () => {
           </span>
         </div>
 
-        <h2 className="text-2xl text-black mt-4 mb-4">
+        <h2 className="text-xl sm:text-2xl text-black mt-4 mb-4">
           {`$${product.price.toFixed(2)}`}
         </h2>
         <h2 className="text-sm text-black">{product.description}</h2>
@@ -183,19 +172,16 @@ const Page = () => {
         <div className="h-[1px] bg-gray-400 mb-6 mt-6"></div>
 
         {product.colors && (
-          <div className="flex items-center gap-6 mb-6">
-            <span className="text-xl text-black leading-none pb-1">
+          <div className="flex items-center flex-wrap gap-4 mb-6">
+            <span className="text-base sm:text-xl text-black leading-none pb-1">
               Colours:
             </span>
-
             <div className="flex items-center gap-2">
               {product.colors.map((item, index) => (
                 <div
                   key={index}
                   style={{ backgroundColor: item.hex }}
-                  className={cn(
-                    "size-5 rounded-full cursor-pointer border-2 border-gray-300 hover:border-foundation-red-500"
-                  )}
+                  className="size-5 rounded-full cursor-pointer border-2 border-gray-300 hover:border-foundation-red-500"
                 ></div>
               ))}
             </div>
@@ -203,16 +189,15 @@ const Page = () => {
         )}
 
         {product.sizes && (
-          <div className="flex items-center gap-6 mb-6">
-            <span className="text-xl text-black leading-none pb-1">Size:</span>
-
-            <div className="flex gap-4 items-center">
+          <div className="flex items-center flex-wrap gap-4 mb-6">
+            <span className="text-base sm:text-xl text-black leading-none pb-1">
+              Size:
+            </span>
+            <div className="flex gap-2 sm:gap-4 items-center flex-wrap">
               {product.sizes.map((item, index) => (
                 <div
                   key={index}
-                  className={cn(
-                    "size-8 text-black flex items-center justify-center text-sm rounded-md border border-gray-400 hover:border-foundation-red-500 hover:bg-foundation-red-500 hover:text-white cursor-pointer transition-colors"
-                  )}
+                  className="px-3 py-1 sm:size-8 text-black flex items-center justify-center text-sm rounded-md border border-gray-400 hover:border-foundation-red-500 hover:bg-foundation-red-500 hover:text-white cursor-pointer transition-colors"
                 >
                   {item}
                 </div>
@@ -221,56 +206,55 @@ const Page = () => {
           </div>
         )}
 
-        <div className="flex items-center gap-4 mb-6">
-          {/* Quantity change */}
+        {/* Quantity + Buttons */}
+        <div className="flex flex-wrap gap-3 sm:gap-4 mb-6">
           <div className="overflow-hidden flex items-center rounded-sm text-black border border-gray-400">
             <button
               onClick={decreaseQuantity}
-              className="p-3 active:bg-foundation-red-500 active:text-white text-xl border-r border-r-gray-400 hover:bg-gray-100 transition-colors"
+              className="p-2 sm:p-3 active:bg-foundation-red-500 active:text-white text-lg sm:text-xl border-r border-r-gray-400 hover:bg-gray-100 transition-colors"
             >
               <FiMinus />
             </button>
-            <div className="px-7">{quantity}</div>
+            <div className="px-4 sm:px-7">{quantity}</div>
             <button
               onClick={increaseQuantity}
-              className="p-3 active:bg-foundation-red-500 active:text-white text-xl border-l border-l-gray-400 hover:bg-gray-100 transition-colors"
+              className="p-2 sm:p-3 active:bg-foundation-red-500 active:text-white text-lg sm:text-xl border-l border-l-gray-400 hover:bg-gray-100 transition-colors"
             >
               <IoAdd />
             </button>
           </div>
 
-          {/* Buy Now Button */}
-          <button className="flex-1 py-3 bg-foundation-red-500 hover:bg-foundation-red-600 rounded-md text-white transition-colors">
+          <button className="flex-1 py-2 sm:py-3 bg-foundation-red-500 hover:bg-foundation-red-600 rounded-md text-white transition-colors">
             Buy Now
           </button>
 
-          {/* Add to wishlist button */}
-          <button className="p-[14px] rounded-md text-black border border-gray-400 hover:bg-gray-100 transition-colors">
+          <button className="p-3 sm:p-[14px] rounded-md text-black border border-gray-400 hover:bg-gray-100 transition-colors">
             <IconHeart />
           </button>
         </div>
 
+        {/* Delivery & Return */}
         <div className="rounded-lg border border-gray-400 divide-y divide-gray-400">
-          <div className="px-4 pt-6 pb-4 flex gap-4">
-            <IconDelivery className="text-black w-10" />
-            <div className="flex flex-col gap-2">
-              <span className="text-base text-black font-medium">
+          <div className="px-3 sm:px-4 pt-4 sm:pt-6 pb-4 flex gap-3 sm:gap-4">
+            <IconDelivery className="text-black w-8 sm:w-10" />
+            <div className="flex flex-col gap-1 sm:gap-2">
+              <span className="text-sm sm:text-base text-black font-medium">
                 Free Delivery
               </span>
-              <span className="text-xs font-medium text-black text-wrap">
+              <span className="text-xs font-medium text-black">
                 Enter your postal code for Delivery Availability Free 30 Days
                 Delivery Returns. Details
               </span>
             </div>
           </div>
 
-          <div className="px-4 pt-6 pb-4 flex gap-4">
-            <IconReturn className="text-black w-10" />
-            <div className="flex flex-col gap-2">
-              <span className="text-base text-black font-medium">
+          <div className="px-3 sm:px-4 pt-4 sm:pt-6 pb-4 flex gap-3 sm:gap-4">
+            <IconReturn className="text-black w-8 sm:w-10" />
+            <div className="flex flex-col gap-1 sm:gap-2">
+              <span className="text-sm sm:text-base text-black font-medium">
                 Return Policy
               </span>
-              <span className="text-xs font-medium text-black text-wrap">
+              <span className="text-xs font-medium text-black">
                 Enter your postal code for Delivery Availability Free 30 Days
                 Delivery Returns. Details
               </span>
