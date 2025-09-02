@@ -31,8 +31,16 @@ import IconReturn from "./icon-return.svg";
 import IconDelete from "./icon-delete.svg";
 import IconEmail from "./icon-mail.svg";
 import IconPhone from "./icon-phone.svg";
+import IconShop from "./icon-shop.svg";
+import IconDollar from "./icon-dollar.svg";
+import IconShoppingbag from "./icon-shoppin-bag.svg";
+import IconMoneybag from "./Icon-moneybag.svg";
 
 export {
+  IconShop,
+  IconDollar,
+  IconShoppingbag,
+  IconMoneybag,
   IconCart,
   CategoryCamera,
   CategoryCellphone,

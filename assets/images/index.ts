@@ -33,8 +33,10 @@ import psController3 from "./ps-controller-3.png";
 import psController4 from "./ps-controller-4.png";
 import mastercard from "./mastercard.png";
 import visacard from "./visacard.png";
+import aboutSectionImage from "./about-section-image.jpg";
 
 export {
+  aboutSectionImage,
   sideImage,
   appleLogo,
   iphone14,
