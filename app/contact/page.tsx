@@ -45,7 +45,7 @@ const inputfieldDetails = [
     name: "phone",
     type: "text",
     placeholder: "Your Phone",
-    className: "",
+    className: "col-span-1 lg:col-span-2 xl:col-span-1",
     validation: {
       required: {
         value: true,
@@ -58,7 +58,7 @@ const inputfieldDetails = [
     name: "message",
     type: "textarea",
     placeholder: "Your Message",
-    className: "md:col-span-3",
+    className: "col-span-1 lg:col-span-2 xl:col-span-3",
     validation: {
       required: {
         value: true,
@@ -91,15 +91,15 @@ const Contact = () => {
     // handleSubmit,
     // reset,
     formState: { errors },
-  } = useForm({ mode: "all" });
+  } = useForm({ mode: "onChange" });
   return (
     <section className="section-mt section-margin-x">
       <div className="flex items-center justify-between gap-8">
         <Breadcrumbs />
       </div>
 
-      <div className="flex flex-col xl:flex-row gap-5 md:gap-6 lg:gap-7 xl:gap-8 section-mt">
-        <div className="max-w-[350px] flex flex-col text-black divide-y divide-gray-400 p-8">
+      <div className="flex flex-col md:flex-row gap-5 md:gap-6 lg:gap-7 xl:gap-8 section-mt">
+        <div className="max-w-[350px] flex flex-col text-black divide-y divide-gray-400 p-4 md:p-8">
           {contactDetails.map((item, index) => (
             <div className={cn("pb-8", index !== 0 && "pt-8")} key={index}>
               <div className="flex items-center gap-4">
@@ -122,8 +122,8 @@ const Contact = () => {
           ))}
         </div>
 
-        <form action="" className="p-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-8 mb-4">
+        <form action="" className="p-4 md:p-8 flex-1">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-4 xl:gap-y-8 mb-4">
             {inputfieldDetails.map((item, index) => (
               <div key={index} className={cn(item?.className)}>
                 <CustomInput
