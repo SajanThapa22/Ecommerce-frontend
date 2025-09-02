@@ -34,6 +34,8 @@ import psController4 from "./ps-controller-4.png";
 import mastercard from "./mastercard.png";
 import visacard from "./visacard.png";
 import aboutSectionImage from "./about-section-image.jpg";
+import johnSmith from "./john-smith-new.png";
+import johnWick from "./john-wick-newer.png";
 
 export {
   aboutSectionImage,
@@ -72,4 +74,6 @@ export {
   psController4,
   visacard,
   mastercard,
+  johnSmith,
+  johnWick,
 };
